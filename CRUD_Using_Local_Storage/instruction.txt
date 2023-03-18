@@ -1,1 +1,3 @@
 ng new CRUD_Using_Local_Storage
+ng g module pages --routing
+ng g c /pages/inline-editing-one
