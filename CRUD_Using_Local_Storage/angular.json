@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Side_Panel_PrimeNG": {
+    "CRUD_LS": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/side-panel-prime-ng",
+            "outputPath": "dist/crud-ls",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Side_Panel_PrimeNG:build:production"
+              "browserTarget": "CRUD_LS:build:production"
             },
             "development": {
-              "browserTarget": "Side_Panel_PrimeNG:build:development"
+              "browserTarget": "CRUD_LS:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Side_Panel_PrimeNG:build"
+            "browserTarget": "CRUD_LS:build"
           }
         },
         "test": {
@@ -103,8 +103,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "d8509717-32a4-4bfa-80f7-17c35b69ec21"
   }
 }
