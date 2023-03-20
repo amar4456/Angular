@@ -8,3 +8,4 @@ ng g module pages/student --routing
 ng g c /pages/student/view
 ng g c /pages/student/add-edit
 ng g s services/student
+To start json server -> json-server --watch db.json
