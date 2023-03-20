@@ -19,6 +19,6 @@ import { AddEditComponent } from './add-edit/add-edit.component';
     ReactiveFormsModule,
     BrowserModule
   ],
-  exports:[ViewComponent]
+  exports:[ViewComponent,AddEditComponent]
 })
 export class StudentModule { }
