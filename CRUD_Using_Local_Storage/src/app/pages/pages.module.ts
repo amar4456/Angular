@@ -12,7 +12,7 @@ import { StudentRegCRUDLocalstorageComponent } from './student-reg-crud-localsto
   declarations: [
     InlineEditingOneComponent,
     EmployeeComponent,
-    StudentRegCRUDLocalstorageComponent
+    StudentRegCRUDLocalstorageComponent,
   ],
   imports: [
     CommonModule,

@@ -3,3 +3,8 @@ ng g module pages --routing
 ng g c /pages/inline-editing-one
 ng g c /pages/employee
 ng g c /pages/student_reg_CRUD_localstorage
+npm i json-server
+ng g module pages/student --routing
+ng g c /pages/student/view
+ng g c /pages/student/add-edit
+ng g s services/student
