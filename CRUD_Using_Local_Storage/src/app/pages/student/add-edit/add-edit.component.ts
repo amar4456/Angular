@@ -35,16 +35,46 @@ export class AddEditComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.studentForm = this.fb.group({
-      firstname: this.fb.control(''),
-      lastname: this.fb.control(''),
-      birthday: this.fb.control(''),
-      gender: this.fb.control(''),
+      firstname: this.fb.control('', Validators.required),
+      lastname: this.fb.control('', Validators.required),
+      birthday: this.fb.control('', Validators.required),
+      gender: this.fb.control('', Validators.required),
       education: this.fb.control('default'),
-      city: this.fb.control(''),
-      state: this.fb.control(''),
-      pin: this.fb.control(''),
+      city: this.fb.control('', Validators.required),
+      state: this.fb.control('', Validators.required),
+      pin: this.fb.control('', Validators.required),
+    });
+
+    this.studentService.getStudent().subscribe(res => {
+      // console.log(res);
+      for (let stu of res) {
+        this.student.unshift(stu);
+      }
+      this.studentToDisplay = this.student;
     });
   }
+
+  // ngOnInit(): void {
+  //   this.studentForm = this.fb.group({
+  //     firstname: this.fb.control(''),
+  //     lastname: this.fb.control(''),
+  //     birthday: this.fb.control(''),
+  //     gender: this.fb.control(''),
+  //     education: this.fb.control('default'),
+  //     city: this.fb.control(''),
+  //     state: this.fb.control(''),
+  //     pin: this.fb.control(''),
+  //   });
+  //   this.StudentService.getStudent().subscribe(res => {
+  //     console.log(res);
+  //   })
+  //     // console.log(res);
+  //     for (let stu of res) {
+  //       this.student.unshift(stu);
+  //     }
+  //     this.studentToDisplay = this.student;
+  //   });
+  // }
 
   ngAfterViewInit(): void {
     // this.buttontemp.nativeElement.click();

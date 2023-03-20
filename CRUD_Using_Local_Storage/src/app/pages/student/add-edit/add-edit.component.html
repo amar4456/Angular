@@ -3,22 +3,28 @@
     <main>
         <!-- Add Students -->
         <div class="toolbar">
-            <div class="add-employees">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Add Students
-                  </button>
+            <div class="add-students">
+                  <button type="button" class="btn btn-outline-success btn-lg" data-toggle="modal" data-target="#exampleModal" #addStudentButton>Add Students</button>
             </div>
 
             <!-- Search Students -->
-            <div class="search-employees">
+            <div class="search-students">
                 <input type="search" class="form-control" placeholder="Search Students">
             </div>
         </div>
 
         <!-- Area to display all the Students -->
-        <div class="employees black-border">
-            <div class="col text-center">
-                <span class="text-secondary fs-2 fw-bold fst-italic">There are No Students Added!</span>
+        <div class="students">
+            <div class="row mt-5" *ngIf="student.length == 0">
+              <div class="col text-center">
+                <span class="text-secondary fs-2 fw-bold fst-italic">There are No Student Added!</span>
+              </div>
+            </div>
+            <!-- Display the Students -->
+            <div class="row mt-4" *ngFor="let student of studentToDisplay; let ei = index">
+              <div class="col">
+                <app-view [student]="student"></app-view>
+              </div>
             </div>
         </div>
     </main>

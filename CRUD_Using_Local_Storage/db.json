@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
       "firstname": "Amar",
       "lastname": "Kumar",
       "birthdate": "2023-03-17",

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Student } from '../model/student.model';
 
 @Component({
   selector: 'app-view',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewComponent implements OnInit {
 
-  constructor() { }
+  @Input() student: Student;
+
+  constructor() {
+    this.student = {
+      firstname: '',
+      lastname: '',
+      birthdate: '',
+      gender: '',
+      education: '',
+      city: '',
+      state: '',
+      pin: '',
+      // profile: '',
+    };
+  }
 
   ngOnInit(): void {
+    console.log(this.student)
   }
 
 }

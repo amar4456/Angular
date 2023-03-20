@@ -1,1 +1,68 @@
-<h1>View Work</h1>
+<div class="container-fluid g-0 p-2">
+    <div class="row g-0">
+        <!-- <div class="col-md-2">
+            <img src="../../assets/Images/{{employee.profile}}" alt="">
+        </div> -->
+        <div class="col ps-2">
+            <div class="row g-0">
+                <div class="col-md-10 text-center">
+                    <span class="name">{{student.firstname | titlecase}} {{student.lastname | titlecase}}</span>
+                </div>
+                <div class="col-md-2">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-success">Edit</button>
+                        <button type="button" class="btn btn-outline-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-0 mt-3">
+                <div class="col-md">
+                    <table class="table table-hover mx-auto">
+                        <thead class="text-center fs-5 fst-italic text-secondary">
+                            <tr>
+                                <td colspan="2">Person Details</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Birthdate</td>
+                                <td>{{student.birthdate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>{{student.gender == 'm' ? 'Male' : 'Female'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Education</td>
+                                <td>{{student.education}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table table-hover mx-auto">
+                        <thead class="text-center fs-5 fst-italic text-secondary">
+                            <tr>
+                                <td colspan="2">Job Details</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>City</td>
+                                <td>{{student.city | titlecase}}</td>
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td>{{student.state}}</td>
+                            </tr>
+                            <tr>
+                                <td>Pin</td>
+                                <td>{{student.pin}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
