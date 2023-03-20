@@ -5,12 +5,14 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { InlineEditingOneComponent } from './inline-editing-one/inline-editing-one.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentRegCRUDLocalstorageComponent } from './student-reg-crud-localstorage/student-reg-crud-localstorage.component';
 
 
 @NgModule({
   declarations: [
     InlineEditingOneComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    StudentRegCRUDLocalstorageComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  exports:[InlineEditingOneComponent,EmployeeComponent]
+  exports:[InlineEditingOneComponent,EmployeeComponent,StudentRegCRUDLocalstorageComponent]
 })
 export class PagesModule { }
