@@ -2,8 +2,9 @@
 <h2>APP</h2>
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
   <h1 style="font-weight:normal">Left Sidebar</h1>
-  <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
-  <p-button type="button" (click)="visibleSidebar1 = false" label="Cancel" styleClass="p-button-secondary"></p-button>
+  <p-panelMenu [model]="items" [style]="{'width':'300px'}"></p-panelMenu>
+  <!-- <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
+  <p-button type="button" (click)="visibleSidebar1 = false" label="Cancel" styleClass="p-button-secondary"></p-button> -->
 </p-sidebar>
 
 <p-button type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></p-button>
@@ -12,5 +13,7 @@
   <!-- <app-inline-editing-one></app-inline-editing-one> -->
   <!-- <app-employee></app-employee> -->
   <!-- <app-student-reg-crud-localstorage></app-student-reg-crud-localstorage> -->
-  <app-add-edit></app-add-edit>
+  <!-- <app-add-edit></app-add-edit> -->
 </div>
+
+<router-outlet></router-outlet>
