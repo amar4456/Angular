@@ -11,6 +11,7 @@ import {RouterModule} from '@angular/router';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ButtonModule } from 'primeng/button';
     HttpClientModule,
     // BrowserAnimationsModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule
   ],
   exports:[ViewComponent,AddEditComponent]
 })

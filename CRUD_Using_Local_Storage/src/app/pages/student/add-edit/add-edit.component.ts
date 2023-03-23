@@ -3,6 +3,12 @@ import { ControlContainer, FormBuilder, FormControl, FormGroup, Validators } fro
 import { Student } from '../model/student.model';
 import { StudentService } from 'src/app/services/student.service';
 import { PrimeNGConfig } from 'primeng/api';
+import { HttpClient } from '@angular/common/http';
+
+interface Record {
+  _id?: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-add-edit',
@@ -29,10 +35,11 @@ export class AddEditComponent implements OnInit, AfterViewInit {
   ];
   displayMaximizable: boolean = false;
 
-  constructor(private fb: FormBuilder, private studentService: StudentService, private primengConfig: PrimeNGConfig) {
+  constructor(private fb: FormBuilder, private studentService: StudentService, private primengConfig: PrimeNGConfig, private http: HttpClient) {
     this.studentForm = fb.group({});
     this.student = [];
     this.studentToDisplay = this.student;
+    this.getRecords();
   }
 
   ngOnInit(): void {
@@ -56,6 +63,8 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     });
 
     this.primengConfig.ripple = true;
+
+    this.getRecords();
   }
 
   // ngOnInit(): void {
@@ -143,4 +152,49 @@ export class AddEditComponent implements OnInit, AfterViewInit {
   public get Pin(): FormControl {
     return this.studentForm.get('pin') as FormControl;
   }
+
+
+  records: Record[] = [];
+  newRecord: Record = { name: '' };
+  selectedRecord: Record = { name: '' };
+  editMode = false;
+
+
+  getRecords(): void {
+    this.http.get<Record[]>('https://crudcrud.com/api/1bc1895b094f4ff2925169f8b0f612fa/records')
+      .subscribe(records => this.records = records);
+  }
+
+  createRecord(): void {
+    this.http.post<Record>('https://crudcrud.com/api/1bc1895b094f4ff2925169f8b0f612fa/records', this.newRecord)
+      .subscribe(record => {
+        this.records.push(record);
+        this.newRecord = { name: '' };
+      });
+  }
+
+  editRecord(record: Record): void {
+    this.editMode = true;
+    this.selectedRecord = { ...record };
+  }
+
+  updateRecord(): void {
+    this.http.put<Record>(`https://crudcrud.com/api/1bc1895b094f4ff2925169f8b0f612fa/records/${this.selectedRecord._id}`, this.selectedRecord)
+      .subscribe(record => {
+        const index = this.records.findIndex(r => r._id === record._id);
+        this.records[index] = record;
+        this.selectedRecord = { name: '' };
+        this.editMode = false;
+      });
+  }
+
+  deleteRecord(record: Record): void {
+    this.http.delete(`https://crudcrud.com/api/1bc1895b094f4ff2925169f8b0f612fa/records/${record._id}`)
+      .subscribe(() => {
+        const index = this.records.findIndex(r => r._id === record._id);
+        this.records.splice(index, 1);
+      });
+  }
+
+  
 }

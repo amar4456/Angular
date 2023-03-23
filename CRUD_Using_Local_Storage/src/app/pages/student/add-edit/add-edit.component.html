@@ -269,3 +269,44 @@
         </div>
     </div>
 </div>
+
+<!-- CRUD USING crudcrud.com API -->
+
+<div>
+    <h2>Create a new record</h2>
+    <form (submit)="createRecord()">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="newRecord.name" name="name">
+      <button type="submit">Create</button>
+    </form>
+  
+    <h2>View all records</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of records">
+          <td>{{ record._id }}</td>
+          <td>{{ record.name }}</td>
+          <td>
+            <button (click)="editRecord(record)">Edit</button>
+            <button (click)="deleteRecord(record)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="editMode">
+      <h2>Edit record</h2>
+      <form (submit)="updateRecord()">
+        <label>Name:</label>
+        <input type="text" [(ngModel)]="selectedRecord.name" name="name">
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
