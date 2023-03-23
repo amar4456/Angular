@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ControlContainer, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Student } from '../model/student.model';
 import { StudentService } from 'src/app/services/student.service';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-add-edit',
@@ -26,8 +27,9 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     'PG',
     'PHD'
   ];
+  displayMaximizable: boolean = false;
 
-  constructor(private fb: FormBuilder, private studentService: StudentService) {
+  constructor(private fb: FormBuilder, private studentService: StudentService, private primengConfig: PrimeNGConfig) {
     this.studentForm = fb.group({});
     this.student = [];
     this.studentToDisplay = this.student;
@@ -52,6 +54,8 @@ export class AddEditComponent implements OnInit, AfterViewInit {
       }
       this.studentToDisplay = this.student;
     });
+
+    this.primengConfig.ripple = true;
   }
 
   // ngOnInit(): void {
@@ -95,6 +99,7 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     this.studentService.postStudent(student).subscribe((res) => {
       this.student.unshift(res);
       this.clearForm();
+      this.displayMaximizable = false;
     })
   }
 
@@ -109,6 +114,10 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     this.Pin.setValue('');
     // this.fileInput.nativeElement.value = '';
   }
+
+  showMaximizableDialog() {
+    this.displayMaximizable = true;
+}
 
   public get FirstName(): FormControl {
     return this.studentForm.get('firstname') as FormControl;
