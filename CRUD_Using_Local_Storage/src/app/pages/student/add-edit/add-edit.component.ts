@@ -164,6 +164,21 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     this.fileInput.nativeElement.value = '';
   }
 
+  searchStudent(event: any) {
+    let filteredEmployees: Student[] = [];
+
+    if (event === ''){
+      this.studentToDisplay = this.student;
+    } else {
+      filteredEmployees = this.student.filter((val, index) => {
+        let targetKey = val.firstname.toLowerCase() + '' + val.lastname.toLowerCase();
+        let searchKey = event.toLowerCase();
+        return targetKey.includes(searchKey);
+      });
+      this.studentToDisplay = filteredEmployees;
+    }
+  }
+
   showMaximizableDialog() {
     this.displayMaximizable = true;
 }

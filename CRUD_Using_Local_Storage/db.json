@@ -10,6 +10,17 @@
       "state": "WB",
       "pin": 999999,
       "id": 2
+    },
+    {
+      "firstname": "Soni",
+      "lastname": "Kumari",
+      "birthdate": "1998-08-05",
+      "gender": "f",
+      "education": "Diploma",
+      "city": "Kolkata",
+      "state": "WB",
+      "pin": 89787,
+      "id": 3
     }
   ],
   "comments": [],
