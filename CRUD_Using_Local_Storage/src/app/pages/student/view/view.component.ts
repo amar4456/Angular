@@ -10,6 +10,7 @@ export class ViewComponent implements OnInit {
 
   @Input() student: Student;
   @Output() onRemoveStudent = new EventEmitter<number>();
+  @Output() onEditStudent = new EventEmitter<number>();
 
   constructor() {
     this.student = {
@@ -31,6 +32,10 @@ export class ViewComponent implements OnInit {
 
   deleteStudentClicked() {
     this.onRemoveStudent.emit(this.student.id);
+  }
+
+  editStudentClicked() {
+    this.onEditStudent.emit(this.student.id);
   }
 
 }

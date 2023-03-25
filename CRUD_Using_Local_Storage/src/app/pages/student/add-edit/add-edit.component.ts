@@ -19,6 +19,7 @@ export class AddEditComponent implements OnInit, AfterViewInit {
 
   // @ViewChild('tempButton') buttontemp: any;
   @ViewChild('fileInput') fileInput: any;
+  @ViewChild('addEmployeeButton') addStudentButton: any;
   title = 'my-app';
 
   studentForm: FormGroup;
@@ -132,6 +133,35 @@ export class AddEditComponent implements OnInit, AfterViewInit {
         });
       }
     });
+  }
+
+  editStudent(event: any) {
+    this.displayMaximizable = true;
+    this.student.forEach((val, ind) => {
+      if(val.id === event){
+        this.setForm(val);
+      }
+    });
+    this.removeStudent(event);
+    this.addStudentButton.nativeElement.click();
+  }
+
+  setForm(stu: Student) {
+    this.FirstName.setValue(stu.firstname);
+    this.LastName.setValue(stu.lastname);
+    this.BirthDay.setValue(stu.birthdate);
+    this.Gender.setValue(stu.gender);
+
+    let educationIndex = 0;
+    this.educationOptions.forEach((val, index) => {
+      if (val === stu.education) educationIndex = index;
+    });
+    this.Education.setValue(educationIndex);
+
+    this.City.setValue(stu.city);
+    this.State.setValue(stu.state);
+    this.Pin.setValue(stu.pin);
+    this.fileInput.nativeElement.value = '';
   }
 
   showMaximizableDialog() {
