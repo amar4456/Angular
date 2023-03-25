@@ -10,26 +10,9 @@
       "state": "WB",
       "pin": 999999,
       "id": 2
-    },
-    {
-      "firstname": "Soni",
-      "lastname": "Kumari",
-      "birthdate": "2022-02-02",
-      "gender": "m",
-      "education": "Diploma",
-      "city": "Dhanbad",
-      "state": "JH",
-      "pin": 77657,
-      "id": 3
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

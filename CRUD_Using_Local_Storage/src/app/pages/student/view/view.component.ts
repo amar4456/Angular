@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Student } from '../model/student.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Student } from '../model/student.model';
 export class ViewComponent implements OnInit {
 
   @Input() student: Student;
+  @Output() onRemoveStudent = new EventEmitter<number>();
 
   constructor() {
     this.student = {
@@ -26,6 +27,10 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.student)
+  }
+
+  deleteStudentClicked() {
+    this.onRemoveStudent.emit(this.student.id);
   }
 
 }

@@ -124,6 +124,16 @@ export class AddEditComponent implements OnInit, AfterViewInit {
     // this.fileInput.nativeElement.value = '';
   }
 
+  removeStudent(event: any) {
+    this.student.forEach((val, index) => {
+      if (val.id === parseInt(event)) {
+        this.studentService.deleteStudent(event).subscribe((res) => {
+          this.student.splice(index, 1)
+        });
+      }
+    });
+  }
+
   showMaximizableDialog() {
     this.displayMaximizable = true;
 }

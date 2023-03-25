@@ -145,7 +145,7 @@
             <!-- Display the Students -->
             <div class="row mt-4" *ngFor="let student of studentToDisplay; let ei = index">
                 <div class="col">
-                    <app-view [student]="student"></app-view>
+                    <app-view [student]="student" (onRemoveStudent)="removeStudent($event)"></app-view>
                 </div>
             </div>
         </div>
