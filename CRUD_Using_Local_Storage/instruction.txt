@@ -11,3 +11,6 @@ ng g s services/student
 To start json server -> json-server --watch db.json
 npm install primeng@14.1.1 --save
 npm i primeicons@5.0.0 --save
+npm install @amcharts/amcharts5
+ng g module pages/amcharts --routing
+ng g c /pages/amcharts/popolation
