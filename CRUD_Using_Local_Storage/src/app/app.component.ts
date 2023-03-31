@@ -37,7 +37,7 @@ export class AppComponent {
           },
           {
             label: 'Popolation Chart',
-            routerLink: ['/popolation'],
+            routerLink: ['/'],
           }
         ]
       },

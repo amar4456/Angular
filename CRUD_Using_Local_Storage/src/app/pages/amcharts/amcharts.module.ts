@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AmchartsRoutingModule } from './amcharts-routing.module';
 import { PopolationComponent } from './popolation/popolation.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PopolationComponent } from './popolation/popolation.component';
   ],
   imports: [
     CommonModule,
-    AmchartsRoutingModule
+    AmchartsRoutingModule,
+    FormsModule
   ]
 })
 export class AmchartsModule { }

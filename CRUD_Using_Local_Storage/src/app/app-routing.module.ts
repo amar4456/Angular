@@ -15,7 +15,7 @@ const routes: Routes = [
     component: StudentRegCRUDLocalstorageComponent,
   },
   {
-    path: 'popolation',
+    path: '',
     component: PopolationComponent,
   },
 ];

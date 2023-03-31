@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { StudentModule } from './pages/student/student.module';
+import { AmchartsModule } from './pages/amcharts/amcharts.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StudentModule } from './pages/student/student.module';
     SidebarModule,
     ButtonModule,
     BrowserAnimationsModule,
-    PanelMenuModule
+    PanelMenuModule,
+    AmchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
