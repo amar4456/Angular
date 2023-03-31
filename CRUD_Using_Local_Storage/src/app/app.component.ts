@@ -34,6 +34,10 @@ export class AppComponent {
           {
             label: 'API',
             routerLink: ['/AE'],
+          },
+          {
+            label: 'Popolation Chart',
+            routerLink: ['/popolation'],
           }
         ]
       },
