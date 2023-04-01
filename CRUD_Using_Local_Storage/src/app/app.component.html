@@ -1,19 +1,8 @@
-<!-- <div class="container mt-3"> -->
-<h2>APP</h2>
-<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-  <h1 style="font-weight:normal">Left Sidebar</h1>
+<p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000" styleClass="np-menubar" [blockScroll]="true" position="left" [modal]="false">
   <p-panelMenu [model]="items" [style]="{'width':'300px'}"></p-panelMenu>
-  <!-- <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
-  <p-button type="button" (click)="visibleSidebar1 = false" label="Cancel" styleClass="p-button-secondary"></p-button> -->
 </p-sidebar>
 
-<p-button type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></p-button>
-
-<div>
-  <!-- <app-inline-editing-one></app-inline-editing-one> -->
-  <!-- <app-employee></app-employee> -->
-  <!-- <app-student-reg-crud-localstorage></app-student-reg-crud-localstorage> -->
-  <!-- <app-add-edit></app-add-edit> -->
+<div class="display-area p-3" [ngClass]="{'display-area-shrink': visibleSidebar}">
+  <p-button type="button" (click)="visibleSidebar = true" icon="pi pi-arrow-right"></p-button>
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

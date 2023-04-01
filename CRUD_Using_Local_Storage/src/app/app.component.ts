@@ -16,7 +16,7 @@ export class AppComponent {
 
   @ViewChild(InlineEditingOneComponent) inlineEditingOneComponent: InlineEditingOneComponent = new InlineEditingOneComponent;
 
-  visibleSidebar1: any;
+  visibleSidebar: boolean=true;
 
   constructor(private primengConfig: PrimeNGConfig) { }
 
@@ -34,7 +34,12 @@ export class AppComponent {
           {
             label: 'API',
             routerLink: ['/AE'],
-          },
+          }
+        ]
+      },
+      {
+        label: 'Amcharts',
+        items: [
           {
             label: 'Popolation Chart',
             routerLink: ['/'],
