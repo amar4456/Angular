@@ -2,10 +2,12 @@
     position: absolute;
     left: 20px;
     width: calc(100% - 20px);
-    transition: left 250ms ease-in, width 250ms ease-in;
+    top: 2%;
+    transition: left 50ms ease-in, width 50ms ease-in;
 }
 
 .display-area-shrink {
     width: calc(100% - 250px);
-    left: 250px;
+    top: 2%;
+    left: 220px;
 }

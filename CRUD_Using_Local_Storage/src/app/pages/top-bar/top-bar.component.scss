@@ -1,0 +1,26 @@
+.container-fluid{
+    background-color: greenyellow;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    padding: 1.5rem 1rem;
+}
+
+.menu-button{
+    margin-right: 1rem;
+}
+
+.icon {
+    line-height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+}

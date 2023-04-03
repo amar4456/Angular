@@ -20,6 +20,10 @@ export class AppComponent {
 
   constructor(private primengConfig: PrimeNGConfig) { }
 
+  menuButton(){
+    this.visibleSidebar = !this.visibleSidebar
+  }
+
   ngOnInit() {
     this.primengConfig.ripple = true;
 

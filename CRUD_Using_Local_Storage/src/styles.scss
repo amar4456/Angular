@@ -1,4 +1,14 @@
 p-sidebar .ng-trigger {
   background: greenyellow;
-  width: 230px !important;
+  width: 200px !important;
+  top: 7%;
+  border-color: transparent;
+  border: none !important;
+  box-shadow: none !important;
 }
+
+.p-component, .p-component * {
+  background-color: white;
+  color: brown;
+}
+

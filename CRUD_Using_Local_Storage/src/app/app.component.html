@@ -3,7 +3,7 @@
   <p-panelMenu [model]="items" [style]="{'width':'300px'}"></p-panelMenu>
 </p-sidebar>
 
-<div class="display-area p-3" [ngClass]="{'display-area-shrink': visibleSidebar}">
-  <p-button type="button" (click)="visibleSidebar = true" icon="pi pi-arrow-right"></p-button>
+<div class="display-area" [ngClass]="{'display-area-shrink': visibleSidebar}">
+  <!-- <p-button type="button" (click)="visibleSidebar = true" icon="pi pi-arrow-right"></p-button> -->
   <router-outlet></router-outlet>
 </div>
