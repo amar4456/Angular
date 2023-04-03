@@ -14,3 +14,4 @@ npm i primeicons@5.0.0 --save
 npm install @amcharts/amcharts5
 ng g module pages/amcharts --routing
 ng g c /pages/amcharts/popolation
+ng g c /pages/top-bar

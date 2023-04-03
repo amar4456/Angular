@@ -6,6 +6,7 @@ import { InlineEditingOneComponent } from './inline-editing-one/inline-editing-o
 import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentRegCRUDLocalstorageComponent } from './student-reg-crud-localstorage/student-reg-crud-localstorage.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { StudentRegCRUDLocalstorageComponent } from './student-reg-crud-localsto
     InlineEditingOneComponent,
     EmployeeComponent,
     StudentRegCRUDLocalstorageComponent,
+    TopBarComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,6 @@ import { StudentRegCRUDLocalstorageComponent } from './student-reg-crud-localsto
     FormsModule,
     ReactiveFormsModule
   ],
-  exports:[InlineEditingOneComponent,EmployeeComponent,StudentRegCRUDLocalstorageComponent]
+  exports:[InlineEditingOneComponent,EmployeeComponent,StudentRegCRUDLocalstorageComponent,TopBarComponent]
 })
 export class PagesModule { }
