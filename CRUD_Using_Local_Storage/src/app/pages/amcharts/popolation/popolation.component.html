@@ -1,6 +1,4 @@
-<br>
-<br>
-<label>Enter your State -> </label>
+<label>Select your State -> </label>
 
 <select [(ngModel)]="selectedOption" (change)="chartData()">
     <option *ngFor="let option of options" [value]="option">{{ option }}</option>

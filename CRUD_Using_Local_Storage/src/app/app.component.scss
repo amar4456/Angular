@@ -1,13 +1,19 @@
 .display-area {
     position: absolute;
     left: 20px;
-    width: calc(100% - 20px);
+    width: calc(100% - 30px);
     top: 2%;
     transition: left 50ms ease-in, width 50ms ease-in;
+    margin-top: 50px;
 }
 
 .display-area-shrink {
-    width: calc(100% - 250px);
+    width: calc(100% - 230px);
     top: 2%;
     left: 220px;
+}
+
+app-top-bar {
+    position: relative;
+    z-index: 9999;
 }
