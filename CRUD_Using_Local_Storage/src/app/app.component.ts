@@ -44,6 +44,26 @@ export class AppComponent {
         this.items = panelMenuState;
       }
 
+    // Set the initial state of the sidebar based on the screen width
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 768) {
+      this.isSidebarOpen = false;
+    } else {
+      this.isSidebarOpen = true;
+    }
+
+    // Listen for window resize events and update the state of the sidebar
+    window.addEventListener('resize', () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 768) {
+        this.isSidebarOpen = false;
+      this.visibleSidebar = false;
+      } else {
+        this.isSidebarOpen = true;
+      this.visibleSidebar = true;
+      }
+    });
+
     this.primengConfig.ripple = true;
 
     this.items = [
