@@ -68,6 +68,11 @@ export class AppComponent {
 
     this.items = [
       {
+          label: 'Dashboard',
+          icon: 'fa fa-dashboard',
+          routerLink: '/',
+      },
+      {
         label: 'CRUD',
         items: [
           {
@@ -85,7 +90,7 @@ export class AppComponent {
         items: [
           {
             label: 'Popolation Chart',
-            routerLink: ['/'],
+            routerLink: ['/PC'],
           }
         ]
       },

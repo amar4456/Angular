@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEditComponent } from './pages/student/add-edit/add-edit.component';
 import { StudentRegCRUDLocalstorageComponent } from './pages/student-reg-crud-localstorage/student-reg-crud-localstorage.component';
 import { PopolationComponent } from './pages/amcharts/popolation/popolation.component';
+import { ControllerComponent } from './pages/dashboard/controller/controller.component';
 
 
 const routes: Routes = [
@@ -15,8 +16,12 @@ const routes: Routes = [
     component: StudentRegCRUDLocalstorageComponent,
   },
   {
-    path: '',
+    path: 'PC',
     component: PopolationComponent,
+  },
+  {
+    path: '',
+    component: ControllerComponent,
   },
 ];
 

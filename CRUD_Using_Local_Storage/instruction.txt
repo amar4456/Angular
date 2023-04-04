@@ -15,3 +15,5 @@ npm install @amcharts/amcharts5
 ng g module pages/amcharts --routing
 ng g c /pages/amcharts/popolation
 ng g c /pages/top-bar
+ng g module pages/dashboard --routing
+ng g c /pages/dashboard/controller
