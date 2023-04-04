@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { StudentModule } from './pages/student/student.module';
 import { AmchartsModule } from './pages/amcharts/amcharts.module';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AmchartsModule } from './pages/amcharts/amcharts.module';
     ButtonModule,
     BrowserAnimationsModule,
     PanelMenuModule,
-    AmchartsModule
+    AmchartsModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

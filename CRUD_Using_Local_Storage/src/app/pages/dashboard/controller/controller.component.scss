@@ -1,0 +1,31 @@
+.extraStyleHeading .p-fieldset-toggleable .p-fieldset-legend {
+    padding: 0 px;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.extraStyleHeading .p-fieldset-legend {
+    border: 1px solid #dee2e6;
+    color: #343a40 !important;
+    background: #e6e6fa;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+.extraStyleHeading .p-fieldset-toggleable .p-fieldset-legend a {
+    padding: 10px;
+    color: #343a40 !important;
+    border-radius: 6px;
+    transition: box-shadow 0.2s background-color 0.2s, ;
+    text-decoration: none;
+    float: left;
+}
+
+.extraStyleHeading .p-fieldset-legend a {
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+}
