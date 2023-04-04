@@ -121,11 +121,11 @@ export class ControllerComponent implements OnInit {
       }));
 
 
-      // Add scrollbar
-      // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-      chart.set("scrollbarX", am5.Scrollbar.new(root, {
-        orientation: "horizontal"
-      }));
+      // // Add scrollbar
+      // // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+      // chart.set("scrollbarX", am5.Scrollbar.new(root, {
+      //   orientation: "horizontal"
+      // }));
 
 
       // Set data
@@ -666,69 +666,69 @@ export class ControllerComponent implements OnInit {
         forceHidden: true
       });
 
-      axisRenderer2.ticks.template.setAll({
-        stroke: color2,
-        visible: true,
-        length: 10,
-        strokeOpacity: 1
-      });
+      // axisRenderer2.ticks.template.setAll({
+      //   stroke: color2,
+      //   visible: true,
+      //   length: 10,
+      //   strokeOpacity: 1
+      // });
 
       axisRenderer2.labels.template.setAll({
         radius: 15
       });
 
-      let xAxis2 = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-        maxDeviation: 0,
-        min: 0,
-        max: 240,
-        strictMinMax: true,
-        renderer: axisRenderer2
-      }));
+      // let xAxis2 = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+      //   maxDeviation: 0,
+      //   min: 0,
+      //   max: 240,
+      //   strictMinMax: true,
+      //   renderer: axisRenderer2
+      // }));
 
 
-      // Label
-      let label2 = chart.seriesContainer.children.push(am5.Label.new(root, {
-        fill: am5.color(0xffffff),
-        x: 100,
-        y: -60,
-        width: 100,
-        centerX: am5.percent(50),
-        textAlign: "center",
-        centerY: am5.percent(50),
-        fontSize: "2em",
-        text: "0",
-        background: am5.RoundedRectangle.new(root, {
-          fill: color2
-        })
-      }));
+      // // Label
+      // let label2 = chart.seriesContainer.children.push(am5.Label.new(root, {
+      //   fill: am5.color(0xffffff),
+      //   x: 100,
+      //   y: -60,
+      //   width: 100,
+      //   centerX: am5.percent(50),
+      //   textAlign: "center",
+      //   centerY: am5.percent(50),
+      //   fontSize: "2em",
+      //   text: "0",
+      //   background: am5.RoundedRectangle.new(root, {
+      //     fill: color2
+      //   })
+      // }));
 
 
-      // Add clock hand
-      let axisDataItem2 = xAxis2.makeDataItem({
-        value: 0,
-        // fill: color2,
-        // name: "Measurement #2"
-      });
+      // // Add clock hand
+      // let axisDataItem2 = xAxis2.makeDataItem({
+      //   value: 0,
+      //   // fill: color2,
+      //   // name: "Measurement #2"
+      // });
 
-      let clockHand2 = am5radar.ClockHand.new(root, {
-        pinRadius: 10,
-        radius: am5.percent(98),
-        bottomWidth: 10
-      });
+      // let clockHand2 = am5radar.ClockHand.new(root, {
+      //   pinRadius: 10,
+      //   radius: am5.percent(98),
+      //   bottomWidth: 10
+      // });
 
-      clockHand2.pin.setAll({
-        fill: color2
-      });
+      // clockHand2.pin.setAll({
+      //   fill: color2
+      // });
 
-      clockHand2.hand.setAll({
-        fill: color2
-      });
+      // clockHand2.hand.setAll({
+      //   fill: color2
+      // });
 
-      let bullet2 = axisDataItem2.set("bullet", am5xy.AxisBullet.new(root, {
-        sprite: clockHand2
-      }));
+      // let bullet2 = axisDataItem2.set("bullet", am5xy.AxisBullet.new(root, {
+      //   sprite: clockHand2
+      // }));
 
-      xAxis2.createAxisRange(axisDataItem2);
+      // xAxis2.createAxisRange(axisDataItem2);
 
       // axisDataItem2.get("grid").set("forceHidden", true);
       // axisDataItem2.get("tick").set("forceHidden", true);
@@ -739,7 +739,8 @@ export class ControllerComponent implements OnInit {
         x: am5.p50,
         centerX: am5.p50
       }));
-      legend.data.setAll([axisDataItem1, axisDataItem2])
+      // legend.data.setAll([axisDataItem1, axisDataItem2])
+      legend.data.setAll([axisDataItem1])
 
 
       // Animate values
@@ -754,15 +755,15 @@ export class ControllerComponent implements OnInit {
 
         label1.set("text", value1);
 
-        let value2:any = Math.round(Math.random() * 240);
-        axisDataItem2.animate({
-          key: "value",
-          to: value2,
-          duration: 1000,
-          easing: am5.ease.out(am5.ease.cubic)
-        });
+        // let value2:any = Math.round(Math.random() * 240);
+        // axisDataItem2.animate({
+        //   key: "value",
+        //   to: value2,
+        //   duration: 1000,
+        //   easing: am5.ease.out(am5.ease.cubic)
+        // });
 
-        label2.set("text", value2);
+        // label2.set("text", value2);
       }, 2000)
 
       // chart.bulletsContainer.set("mask", undefined);
