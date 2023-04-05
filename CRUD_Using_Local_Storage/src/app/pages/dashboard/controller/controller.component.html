@@ -29,15 +29,42 @@
 
     <!-- Pie Chart -->
     <div class="col-sm-12 col-md-6 col-lg-4">
-        <p-fieldset class="extraStyleHeading" legend="Pie Chart">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="pieChart" style="height: 500px; width: 100%;"></div>
+        <div class="fullscreen-div-pie-chart">
+            <p-fieldset class="extraStyleHeading">
+                <p-header>
+                    <div class="row" style="height: 25px;">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <p>Pie Chart</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <a (click)="toggleFullscreenPieChart()" style="float: right;">
+                                <i [ngClass]="isFullscreen ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+
+                        </div>
+                    </div>
+                </p-header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <p-radioButton name="state" value="WB" [(ngModel)]="ingredient" inputId="WB" (onClick)="name()"></p-radioButton>
+                            <label for="WB" class="ml-2">West Bengal</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <p-radioButton name="state" value="JH" [(ngModel)]="ingredient" inputId="JH" (onClick)="name()"></p-radioButton>
+                            <label for="JH" class="ml-2">Jahrkhand</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="pieChart" style="height: 500px; width: 100%;"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </p-fieldset>
+            </p-fieldset>
+        </div>
     </div>
 
     <!-- Donut Chart -->

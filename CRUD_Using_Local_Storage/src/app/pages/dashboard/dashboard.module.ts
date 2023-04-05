@@ -5,6 +5,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ControllerComponent } from './controller/controller.component';
 import { FieldsetModule } from 'primeng/fieldset';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +17,10 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     CommonModule,
     DashboardRoutingModule,
     FieldsetModule,
-    SplitButtonModule
+    SplitButtonModule,
+    RadioButtonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

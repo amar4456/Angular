@@ -13,6 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ControllerComponent implements OnInit {
   isFullscreen = false;
+  ingredient!: string;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -24,6 +25,12 @@ export class ControllerComponent implements OnInit {
 
   toggleFullscreen() {
     const div = document.querySelector('.fullscreen-div');
+    div?.classList.toggle('fullscreen');
+    this.isFullscreen = !this.isFullscreen;
+  }
+
+  toggleFullscreenPieChart() {
+    const div = document.querySelector('.fullscreen-div-pie-chart');
     div?.classList.toggle('fullscreen');
     this.isFullscreen = !this.isFullscreen;
   }
@@ -845,6 +852,10 @@ export class ControllerComponent implements OnInit {
 
     // Angular Gauge with Two Axess End
 
+  }
+
+  name(){
+    alert(this.ingredient);
   }
 
 }
