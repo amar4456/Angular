@@ -49,12 +49,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-6">
-                            <p-radioButton name="state" value="WB" [(ngModel)]="ingredient" inputId="WB" (onClick)="name()"></p-radioButton>
+                            <p-radioButton name="state" value="WB" [(ngModel)]="ingredient" inputId="WB" (onClick)="getPieChartData()"></p-radioButton>
                             <label for="WB" class="ml-2">West Bengal</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-6">
-                            <p-radioButton name="state" value="JH" [(ngModel)]="ingredient" inputId="JH" (onClick)="name()"></p-radioButton>
-                            <label for="JH" class="ml-2">Jahrkhand</label>
+                            <p-radioButton name="state" value="JH" [(ngModel)]="ingredient" inputId="JH" (onClick)="getPieChartData()"></p-radioButton>
+                            <label for="JH" class="ml-2">Jharkhand</label>
                         </div>
                     </div>
                     <div class="row">

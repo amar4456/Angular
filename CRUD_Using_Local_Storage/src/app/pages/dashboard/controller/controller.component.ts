@@ -13,7 +13,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ControllerComponent implements OnInit {
   isFullscreen = false;
-  ingredient!: string;
+  ingredient = 'JH';
+  series:any;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -180,7 +181,7 @@ export class ControllerComponent implements OnInit {
 
       // Create series
       // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-      let series = chart.series.push(
+      this.series = chart.series.push(
         am5percent.PieSeries.new(root, {
           valueField: "value",
           categoryField: "category",
@@ -188,36 +189,38 @@ export class ControllerComponent implements OnInit {
         })
       );
 
-      series.states.create("hidden", {
+      this.series.states.create("hidden", {
         endAngle: -90
       });
 
       // Set data
       // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-      series.data.setAll([{
-        category: "Lithuania",
-        value: 501.9
-      }, {
-        category: "Czechia",
-        value: 301.9
-      }, {
-        category: "Ireland",
-        value: 201.1
-      }, {
-        category: "Germany",
-        value: 165.8
-      }, {
-        category: "Australia",
-        value: 139.9
-      }, {
-        category: "Austria",
-        value: 128.3
-      }, {
-        category: "UK",
-        value: 99
-      }]);
 
-      series.appear(1000, 100);
+      this.getPieChartData();
+      // this.series.data.setAll([{
+      //   category: "Lithuania",
+      //   value: 501.9
+      // }, {
+      //   category: "Czechia",
+      //   value: 301.9
+      // }, {
+      //   category: "Ireland",
+      //   value: 201.1
+      // }, {
+      //   category: "Germany",
+      //   value: 165.8
+      // }, {
+      //   category: "Australia",
+      //   value: 139.9
+      // }, {
+      //   category: "Austria",
+      //   value: 128.3
+      // }, {
+      //   category: "UK",
+      //   value: 99
+      // }]);
+
+      this.series.appear(1000, 100);
 
     });
 
@@ -854,8 +857,49 @@ export class ControllerComponent implements OnInit {
 
   }
 
-  name(){
-    alert(this.ingredient);
+  getPieChartData(){
+    // alert(this.ingredient);
+    if(this.ingredient == 'WB'){
+      this.series.data.setAll([{
+        category: "Lithuania",
+        value: 501.9
+      }, {
+        category: "Czechia",
+        value: 301.9
+      }, {
+        category: "Ireland",
+        value: 201.1
+      }, {
+        category: "Germany",
+        value: 165.8
+      }, {
+        category: "Australia",
+        value: 139.9
+      }, {
+        category: "Austria",
+        value: 128.3
+      }, {
+        category: "UK",
+        value: 99
+      }]);
+    } else if (this.ingredient == 'JH'){
+      this.series.data.setAll([{
+        category: "Rice",
+        value: 501.9
+      }, {
+        category: "Banana",
+        value: 301.9
+      }, {
+        category: "Apple",
+        value: 201.1
+      }, {
+        category: "Orange",
+        value: 165.8
+      }, {
+        category: "Vagetables",
+        value: 139.9
+      }]);
+    }
   }
 
 }
