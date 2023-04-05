@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit {
+  isFullscreen = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -19,6 +20,12 @@ export class ControllerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  toggleFullscreen() {
+    const div = document.querySelector('.fullscreen-div');
+    div?.classList.toggle('fullscreen');
+    this.isFullscreen = !this.isFullscreen;
   }
 
   // Run the function only in the browser

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ControllerComponent } from './controller/controller.component';
 import { FieldsetModule } from 'primeng/fieldset';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FieldsetModule } from 'primeng/fieldset';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FieldsetModule
+    FieldsetModule,
+    SplitButtonModule
   ]
 })
 export class DashboardModule { }

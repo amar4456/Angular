@@ -1,15 +1,30 @@
 <div class="row" >
     <!-- Line Graph -->
     <div class="col-sm-12 col-md-6 col-lg-4">
-        <p-fieldset class="extraStyleHeading" legend="Line Graph">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="chartdiv" style="height: 500px; width: 100%;"></div>
+        <div class="fullscreen-div">
+            <p-fieldset class="extraStyleHeading">
+                <p-header>
+                    <div class="row" style="height: 25px;">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <p>Line Graph</p>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <a (click)="toggleFullscreen()" style="float: right;">
+                                <i [ngClass]="isFullscreen ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"></i>
+                            </a>
+                        </div>
+                    </div>
+                </p-header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="chartdiv" style="height: 500px; width: 100%;"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </p-fieldset>
+            </p-fieldset>
+        </div>
+        
     </div>
 
     <!-- Pie Chart -->
