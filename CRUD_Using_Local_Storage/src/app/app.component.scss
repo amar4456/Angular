@@ -8,12 +8,15 @@
 }
 
 .display-area-shrink {
-    width: calc(100% - 230px);
+    width: calc(100% - 240px);
     top: 2%;
     left: 220px;
 }
 
 app-top-bar {
-    position: relative;
+    position: fixed;
     z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
 }
