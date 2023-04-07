@@ -15,7 +15,17 @@ export class ControllerComponent implements OnInit {
   isFullscreen = false;
   ingredient = 'JH';
   series:any;
+  selectedOptionForColumn = 'West Bengal';
+  dataForColumn: any[] = [];
+  optionsForColumn = [
+    'West Bengal',
+    'Jharkhand',
+    'Bihar'
+  ];
+  chartForColumn:any;
 
+  private root!: am5.Root;
+  
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone,
@@ -455,167 +465,36 @@ export class ControllerComponent implements OnInit {
 
     //  Column with Rotated Labels Start
 
-    // this.browserOnly(() => {
-    //   /* Chart code */
-    //   // Create root element
-    //   // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    //   let root = am5.Root.new("columnChart");
-
-
-    //   // Set themes
-    //   // https://www.amcharts.com/docs/v5/concepts/themes/
-    //   root.setThemes([
-    //     am5themes_Animated.new(root)
-    //   ]);
-
-
-    //   // Create chart
-    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/
-    //   let chart = root.container.children.push(am5xy.XYChart.new(root, {
-    //     panX: true,
-    //     panY: true,
-    //     wheelX: "panX",
-    //     wheelY: "zoomX",
-    //     pinchZoomX: true
-    //   }));
-
-    //   // Add cursor
-    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-    //   let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-    //   cursor.lineY.set("visible", false);
-
-
-    //   // Create axes
-    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    //   let xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
-    //   xRenderer.labels.template.setAll({
-    //     rotation: -90,
-    //     centerY: am5.p50,
-    //     centerX: am5.p100,
-    //     paddingRight: 15
-    //   });
-
-    //   xRenderer.grid.template.setAll({
-    //     location: 1
-    //   })
-
-    //   let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-    //     maxDeviation: 0.3,
-    //     categoryField: "country",
-    //     renderer: xRenderer,
-    //     tooltip: am5.Tooltip.new(root, {})
-    //   }));
-
-    //   let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-    //     maxDeviation: 0.3,
-    //     renderer: am5xy.AxisRendererY.new(root, {
-    //       strokeOpacity: 0.1
-    //     })
-    //   }));
-
-
-    //   // Create series
-    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-    //   let series = chart.series.push(am5xy.ColumnSeries.new(root, {
-    //     name: "Series 1",
-    //     xAxis: xAxis,
-    //     yAxis: yAxis,
-    //     valueYField: "value",
-    //     sequencedInterpolation: true,
-    //     categoryXField: "country",
-    //     tooltip: am5.Tooltip.new(root, {
-    //       labelText: "{valueY}"
-    //     })
-    //   }));
-
-    //   // Color Issue
-
-    //   // series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-    //   // series.columns.template.adapters.add("fill", function (fill, target) {
-    //   //   return chart.get("colors").getIndex(series.columns.indexOf(target));
-    //   // });
-
-    //   // series.columns.template.adapters.add("stroke", function (stroke, target) {
-    //   //   return chart.get("colors").getIndex(series.columns.indexOf(target));
-    //   // });
-
-    //   series.set("fill", am5.color(0xff0000,));
-
-
-    //   // Set data
-    //   let data = [{
-    //     country: "USA",
-    //     value: 2025
-    //   }, {
-    //     country: "China",
-    //     value: 1882
-    //   }, {
-    //     country: "Japan",
-    //     value: 1809
-    //   }, {
-    //     country: "Germany",
-    //     value: 1322
-    //   }, {
-    //     country: "UK",
-    //     value: 1122
-    //   }, {
-    //     country: "France",
-    //     value: 1114
-    //   }, {
-    //     country: "India",
-    //     value: 984
-    //   }, {
-    //     country: "Spain",
-    //     value: 711
-    //   }, {
-    //     country: "Netherlands",
-    //     value: 665
-    //   }, {
-    //     country: "South Korea",
-    //     value: 443
-    //   }, {
-    //     country: "Canada",
-    //     value: 441
-    //   }];
-
-    //   xAxis.data.setAll(data);
-    //   series.data.setAll(data);
-
-
-    //   // Make stuff animate on load
-    //   // https://www.amcharts.com/docs/v5/concepts/animations/
-    //   series.appear(1000);
-    //   chart.appear(1000, 100);
-    // });
-
-    // Column with Rotated Labels Chart -> Get data from Json Server
     this.browserOnly(() => {
       /* Chart code */
       // Create root element
       // https://www.amcharts.com/docs/v5/getting-started/#Root_element
       let root = am5.Root.new("columnChart");
-    
+
+
       // Set themes
       // https://www.amcharts.com/docs/v5/concepts/themes/
       root.setThemes([
         am5themes_Animated.new(root)
       ]);
-    
+
+
       // Create chart
       // https://www.amcharts.com/docs/v5/charts/xy-chart/
-      let chart = root.container.children.push(am5xy.XYChart.new(root, {
+      this.chartForColumn = root.container.children.push(am5xy.XYChart.new(root, {
         panX: true,
         panY: true,
         wheelX: "panX",
         wheelY: "zoomX",
         pinchZoomX: true
       }));
-    
+
       // Add cursor
       // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-      let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+      let cursor = this.chartForColumn.set("cursor", am5xy.XYCursor.new(root, {}));
       cursor.lineY.set("visible", false);
-    
+
+
       // Create axes
       // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
       let xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
@@ -625,55 +504,153 @@ export class ControllerComponent implements OnInit {
         centerX: am5.p100,
         paddingRight: 15
       });
-    
+
       xRenderer.grid.template.setAll({
         location: 1
       })
-    
-      let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+
+      let xAxis = this.chartForColumn.xAxes.push(am5xy.CategoryAxis.new(root, {
         maxDeviation: 0.3,
-        categoryField: "firstname",
+        categoryField: "country",
         renderer: xRenderer,
         tooltip: am5.Tooltip.new(root, {})
       }));
-    
-      let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+
+      let yAxis = this.chartForColumn.yAxes.push(am5xy.ValueAxis.new(root, {
         maxDeviation: 0.3,
         renderer: am5xy.AxisRendererY.new(root, {
           strokeOpacity: 0.1
         })
       }));
-    
+
+
       // Create series
       // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-      let series = chart.series.push(am5xy.ColumnSeries.new(root, {
+      let series = this.chartForColumn.series.push(am5xy.ColumnSeries.new(root, {
         name: "Series 1",
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: "pin",
+        valueYField: "value",
         sequencedInterpolation: true,
-        categoryXField: "firstname",
+        categoryXField: "country",
         tooltip: am5.Tooltip.new(root, {
           labelText: "{valueY}"
         })
       }));
-    
-      series.set("fill", am5.color(0xff0000));
-    
-      // Fetch data from JSON server
-      fetch("http://localhost:3000/posts")
-        .then(response => response.json())
-        .then(data => {
-          xAxis.data.setAll(data);
-          series.data.setAll(data);
-    
-          // Make stuff animate on load
-          // https://www.amcharts.com/docs/v5/concepts/animations/
-          series.appear(1000);
-          chart.appear(1000, 100);
-        })
-        .catch(error => console.error(error));
+
+      // Color Issue
+
+      // series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+      // series.columns.template.adapters.add("fill", function (fill, target) {
+      //   return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // });
+
+      // series.columns.template.adapters.add("stroke", function (stroke, target) {
+      //   return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // });
+
+      series.set("fill", am5.color(0xff0000,));
+
+
+      // Set data
+      this.chartDataForColumn();
+
+      xAxis.data.setAll(this.dataForColumn);
+      series.data.setAll(this.dataForColumn);
+
+
+      // Make stuff animate on load
+      // https://www.amcharts.com/docs/v5/concepts/animations/
+      series.appear(1000);
+      this.chartForColumn.appear(1000, 100);
     });
+
+    // Column with Rotated Labels Chart -> Get data from Json Server
+    // this.browserOnly(() => {
+    //   /* Chart code */
+    //   // Create root element
+    //   // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+    //   let root = am5.Root.new("columnChart");
+    
+    //   // Set themes
+    //   // https://www.amcharts.com/docs/v5/concepts/themes/
+    //   root.setThemes([
+    //     am5themes_Animated.new(root)
+    //   ]);
+    
+    //   // Create chart
+    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/
+    //   let chart = root.container.children.push(am5xy.XYChart.new(root, {
+    //     panX: true,
+    //     panY: true,
+    //     wheelX: "panX",
+    //     wheelY: "zoomX",
+    //     pinchZoomX: true
+    //   }));
+    
+    //   // Add cursor
+    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+    //   let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+    //   cursor.lineY.set("visible", false);
+    
+    //   // Create axes
+    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+    //   let xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
+    //   xRenderer.labels.template.setAll({
+    //     rotation: -90,
+    //     centerY: am5.p50,
+    //     centerX: am5.p100,
+    //     paddingRight: 15
+    //   });
+    
+    //   xRenderer.grid.template.setAll({
+    //     location: 1
+    //   })
+    
+    //   let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+    //     maxDeviation: 0.3,
+    //     categoryField: "firstname",
+    //     renderer: xRenderer,
+    //     tooltip: am5.Tooltip.new(root, {})
+    //   }));
+    
+    //   let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+    //     maxDeviation: 0.3,
+    //     renderer: am5xy.AxisRendererY.new(root, {
+    //       strokeOpacity: 0.1
+    //     })
+    //   }));
+    
+    //   // Create series
+    //   // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+    //   let series = chart.series.push(am5xy.ColumnSeries.new(root, {
+    //     name: "Series 1",
+    //     xAxis: xAxis,
+    //     yAxis: yAxis,
+    //     valueYField: "pin",
+    //     sequencedInterpolation: true,
+    //     categoryXField: "firstname",
+    //     tooltip: am5.Tooltip.new(root, {
+    //       labelText: "{valueY}"
+    //     })
+    //   }));
+    
+    //   series.set("fill", am5.color(0xff0000));
+    
+    //   // Fetch data from JSON server
+    //   fetch("http://localhost:3000/posts")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       xAxis.data.setAll(data);
+    //       series.data.setAll(data);
+    
+    //       // Make stuff animate on load
+    //       // https://www.amcharts.com/docs/v5/concepts/animations/
+    //       series.appear(1000);
+    //       chart.appear(1000, 100);
+    //     })
+    //     .catch(error => console.error(error));
+    // });
 
     //  Column with Rotated Labels End
 
@@ -1111,5 +1088,106 @@ export class ControllerComponent implements OnInit {
       }]);
     }
   }
+
+  chartDataForColumn = () => {
+    if (this.selectedOptionForColumn == 'West Bengal') {
+      this.dataForColumn = [{
+        country: "USA",
+        value: 2025
+      }, {
+        country: "China",
+        value: 1882
+      }, {
+        country: "Japan",
+        value: 1809
+      }, {
+        country: "Germany",
+        value: 1322
+      }, {
+        country: "UK",
+        value: 1122
+      }, {
+        country: "France",
+        value: 1114
+      }, {
+        country: "India",
+        value: 984
+      }, {
+        country: "Spain",
+        value: 711
+      }, {
+        country: "Netherlands",
+        value: 665
+      }, {
+        country: "South Korea",
+        value: 588
+      }, {
+        country: "Russia",
+        value: 346
+      }, {
+        country: "Switzerland",
+        value: 307
+      }, {
+        country: "Australia",
+        value: 270
+      }, {
+        country: "Sweden",
+        value: 210
+      }, {
+        country: "Norway",
+        value: 184
+      }, {
+        country: "Taiwan",
+        value: 157
+      }, {
+        country: "Poland",
+        value: 128
+      }, {
+        country: "Belgium",
+        value: 127
+      }, {
+        country: "Turkey",
+        value: 86
+      }];
+  
+      // Update chart data
+      this.chartForColumn.xAxes.getIndex(0).data.setAll(this.dataForColumn);
+      this.chartForColumn.series.getIndex(0).data.setAll(this.dataForColumn);
+    } else if (this.selectedOptionForColumn == 'Jharkhand') {
+      this.dataForColumn = [{
+        country: "Ranchi",
+        value: 800
+      },
+      {
+        country: "Dhanbad",
+        value: 950
+      },
+      {
+        country: "Jamshedpur",
+        value: 1100
+      }];
+  
+      // Update chart data
+      this.chartForColumn.xAxes.getIndex(0).data.setAll(this.dataForColumn);
+      this.chartForColumn.series.getIndex(0).data.setAll(this.dataForColumn);
+    } else if (this.selectedOptionForColumn == 'Bihar') {
+      this.dataForColumn = [{
+        country: "Patna",
+        value: 1200
+      },
+      {
+        country: "Gaya",
+        value: 1000
+      },
+      {
+        country: "Bhagalpur",
+        value: 750
+      }];
+  
+      // Update chart data
+      this.chartForColumn.xAxes.getIndex(0).data.setAll(this.dataForColumn);
+      this.chartForColumn.series.getIndex(0).data.setAll(this.dataForColumn);
+    }
+  };
 
 }

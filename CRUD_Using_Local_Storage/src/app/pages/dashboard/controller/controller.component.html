@@ -82,7 +82,22 @@
 
     <!-- Column with Rotated Labels -->
     <div class="col-sm-12 col-md-6 col-lg-12" style="margin-top: 2%;">
-        <p-fieldset class="extraStyleHeading" legend="Column with Rotated Labels Chart">
+        <p-fieldset class="extraStyleHeading">
+            <p-header>
+                <div class="row" style="height: 25px;">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <p>Column with Rotated Labels Chart</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <select [(ngModel)]="selectedOptionForColumn" (change)="chartDataForColumn()">
+                            <option *ngFor="let option of optionsForColumn" [value]="option">{{ option }}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+
+                    </div>
+                </div>
+            </p-header>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
