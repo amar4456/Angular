@@ -24,9 +24,9 @@ export class CommonHttpService {
     }
     // baseUrl='http://localhost:8080/monstarbill'// local server
     //baseUrl="http://3.7.123.122:8080/monstarbill"; // test server
-    //baseUrl = 'http://43.205.33.156:8080/monstarbill'; //dev server
+    baseUrl = 'http://43.205.33.156:8080/monstarbill'; //dev server
 
-    baseUrl = 'http://43.205.33.156:8082';//[Dev] 
+    // baseUrl = 'http://43.205.33.156:8082';//[Dev] 
     //baseUrl = 'http://3.7.123.122:8082';//[Test]
     baseUrl_company = 'http://3.109.100.117:8080/MBLWeb'; //Web server
     ReportUrl = 'http://43.205.33.156:7777/birt-viewer'; //DEV REPORT server

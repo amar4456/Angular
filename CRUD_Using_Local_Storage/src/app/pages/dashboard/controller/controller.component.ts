@@ -5,6 +5,7 @@ import * as am5percent from "@amcharts/amcharts5/percent";
 import * as am5xy from '@amcharts/amcharts5/xy';
 import * as am5radar from '@amcharts/amcharts5/radar'
 import { isPlatformBrowser } from '@angular/common';
+import { CommonHttpService } from 'src/app/services/common-http.service'
 
 @Component({
   selector: 'app-controller',
@@ -15,23 +16,41 @@ export class ControllerComponent implements OnInit {
   isFullscreen = false;
   ingredient = 'JH';
   series:any;
+  pieSeriesOfAPI:any;
   selectedOptionForColumn = 'West Bengal';
+  selectedOptionForPieChartOfAPI = 'Subsidiary ID - 1';
   dataForColumn: any[] = [];
   optionsForColumn = [
     'West Bengal',
     'Jharkhand',
     'Bihar'
   ];
+  optionsForPieChartOfAPI = [
+    'Subsidiary ID - 1',
+    'Subsidiary ID - 2',
+    'Subsidiary ID - 43',
+    'Subsidiary ID - 4',
+    'Subsidiary ID - 5',
+    'Subsidiary ID - 6',
+    'Subsidiary ID - 7',
+    'Subsidiary ID - 8',
+    'Subsidiary ID - 9',
+    'Subsidiary ID - 10',
+  ];
   chartForColumn:any;
+  subsidiaryIdForChart = 1;
+  chartData: any[] = [];
 
   private root!: am5.Root;
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private zone: NgZone,
+    private HttpService: CommonHttpService,
   ) { }
 
   ngOnInit(): void {
+    this.GetChartData(this.subsidiaryIdForChart);
   }
 
   toggleFullscreen() {
@@ -278,6 +297,56 @@ export class ControllerComponent implements OnInit {
           this.series.data.setAll(data);
           this.series.appear(1000, 100);
         });
+    });
+
+    // Pie Chart -> Get data from Real API
+    this.browserOnly(() => {
+      /* Chart code */
+      // Create root element
+      // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+      let root = am5.Root.new("pieChartAPI");
+    
+      // Set themes
+      // https://www.amcharts.com/docs/v5/concepts/themes/
+      root.setThemes([
+        am5themes_Animated.new(root)
+      ]);
+    
+      // Create chart
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+      let chart = root.container.children.push(
+        am5percent.PieChart.new(root, {
+          endAngle: 270
+        })
+      );
+    
+      // Create series
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+      this.pieSeriesOfAPI = chart.series.push(
+        am5percent.PieSeries.new(root, {
+          // valueField: "pin",
+          // categoryField: "firstname",
+          valueField: "value",
+          categoryField: "category",
+          endAngle: 270
+        })
+      );
+    
+      this.pieSeriesOfAPI.states.create("hidden", {
+        endAngle: -90
+      });
+    
+      // Set data
+      // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+    
+      // fetch('http://localhost:3000/posts') // replace 'URL' with the URL of your JSON server
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.series.data.setAll(data);
+      //     this.series.appear(1000, 100);
+      //   });
+
+      this.updateChartData();  // for real api data.
     });
 
     // Pie Chart End
@@ -1189,5 +1258,57 @@ export class ControllerComponent implements OnInit {
       this.chartForColumn.series.getIndex(0).data.setAll(this.dataForColumn);
     }
   };
+
+  chartDataForPieChartOfAPI = () => {
+    if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 1') {
+      this.subsidiaryIdForChart = 1;
+      this.GetChartData(this.subsidiaryIdForChart); 
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 2') {
+      this.subsidiaryIdForChart = 2;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 43') {
+      this.subsidiaryIdForChart = 43;
+      this.GetChartData(this.subsidiaryIdForChart);
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 4') {
+      this.subsidiaryIdForChart = 4;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 5') {
+      this.subsidiaryIdForChart = 5;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 6') {
+      this.subsidiaryIdForChart = 7;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 7') {
+      this.subsidiaryIdForChart = 7;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 8') {
+      this.subsidiaryIdForChart = 8;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 9') {
+      this.subsidiaryIdForChart = 9;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 10') {
+      this.subsidiaryIdForChart = 10;
+      this.GetChartData(this.subsidiaryIdForChart);  // for real api data.
+    }
+  };
+
+  GetChartData(subsidiaryIdForChart:any) {
+    this.HttpService
+      // .GetById('/supplier/get-dashboard-by-status?subsidiaryId=1', this.Controller.subsidiaryId)
+      .GetById(`/supplier/get-dashboard-by-status?subsidiaryId=`+subsidiaryIdForChart, subsidiaryIdForChart)
+      .subscribe((res) => {
+        this.chartData = res;
+        console.log(this.chartData);
+        this.updateChartData();
+        res.forEach((data: any) => console.log(data)); // to log each object in the array separately.
+      });
+  }
+
+  updateChartData() {
+    // alert(this.subsidiaryIdForChart);
+    this.pieSeriesOfAPI.data.setAll(this.chartData); // set the data for the chart series
+    this.pieSeriesOfAPI.appear(1000, 100); // animate the chart series
+  }
 
 }
