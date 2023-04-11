@@ -91,6 +91,10 @@ export class AppComponent {
           {
             label: 'Popolation Chart',
             routerLink: ['/PC'],
+          },
+          {
+            label: 'Test Amcharts',
+            routerLink: ['/Test-Amcharts'],
           }
         ]
       },

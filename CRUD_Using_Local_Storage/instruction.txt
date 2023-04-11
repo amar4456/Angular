@@ -17,3 +17,4 @@ ng g c /pages/amcharts/popolation
 ng g c /pages/top-bar
 ng g module pages/dashboard --routing
 ng g c /pages/dashboard/controller
+ng g c /pages/dashboard/test

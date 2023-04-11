@@ -7,11 +7,13 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
   declarations: [
-    ControllerComponent
+    ControllerComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,
