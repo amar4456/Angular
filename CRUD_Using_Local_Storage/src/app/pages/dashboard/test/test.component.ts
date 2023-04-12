@@ -43,6 +43,7 @@ export class TestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.GetApiData(this.subsidiaryIdForChart);
   }
 
   // Run the function only in the browser
@@ -102,7 +103,7 @@ export class TestComponent implements OnInit {
       //     this.series.appear(1000, 100);
       //   });
 
-      this.GetPieChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetPieChartData();  // for real api data.
     });
 
     // Donut Chart -> Get data from Real API
@@ -131,121 +132,129 @@ export class TestComponent implements OnInit {
         categoryField: "category"
       }));
 
-      this.GetDonutChartData(this.subsidiaryIdForChart);
+      this.GetDonutChartData();
     });
+  }
+
+  GetApiData(subsidiaryIdForChart: any) {
+    this.HttpService
+      .GetById(`/supplier/get-dashboard-by-status?subsidiaryId=` + subsidiaryIdForChart, subsidiaryIdForChart)
+      .subscribe((res) => {
+        this.chartData = res;
+        console.log(this.chartData);
+        res.forEach((data: any) => console.log(data)); // to log each object in the array separately.
+
+        this.GetPieChartData(); // to pass the value in Pie Chart.
+        this.GetDonutChartData(); // to pass the value in Donut Chart.
+      });
   }
 
   GetDataOnChangeSubsidiaryId() {
     if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 1') {
       this.subsidiaryIdForChart = 1;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 2') {
       this.subsidiaryIdForChart = 2;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 43') {
       this.subsidiaryIdForChart = 43;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 4') {
       this.subsidiaryIdForChart = 4;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 5') {
       this.subsidiaryIdForChart = 5;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 6') {
       this.subsidiaryIdForChart = 7;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 7') {
       this.subsidiaryIdForChart = 7;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 8') {
       this.subsidiaryIdForChart = 8;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 9') {
       this.subsidiaryIdForChart = 9;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 10') {
       this.subsidiaryIdForChart = 10;
-      this.GetPieChartData(this.subsidiaryIdForChart);
-      this.GetDonutChartData(this.subsidiaryIdForChart);  // for real api data.
+      this.GetApiData(this.subsidiaryIdForChart);
+      this.GetPieChartData();
+      this.GetDonutChartData();
     }
   };
 
-  GetPieChartData(subsidiaryIdForChart: any) {
-    this.HttpService
-      // .GetById('/supplier/get-dashboard-by-status?subsidiaryId=1', this.Controller.subsidiaryId)
-      .GetById(`/supplier/get-dashboard-by-status?subsidiaryId=` + subsidiaryIdForChart, subsidiaryIdForChart)
-      .subscribe((res) => {
-        this.chartData = res;
-        console.log(this.chartData);
-        // alert(this.subsidiaryIdForChart);
-        this.pieSeriesOfAPI.data.setAll(this.chartData); // set the data for the chart series
-        this.pieSeriesOfAPI.appear(1000, 100); // animate the chart series
-
-        res.forEach((data: any) => console.log(data)); // to log each object in the array separately.
-      });
+  GetPieChartData() {
+    this.pieSeriesOfAPI.data.setAll(this.chartData); // set the data for the chart series
+    this.pieSeriesOfAPI.appear(1000, 100); // animate the chart series
   }
 
-  GetDonutChartData(subsidiaryIdForChart: any) {
-    // Fetch data from server
-    this.HttpService.GetById(`/supplier/get-dashboard-by-status?subsidiaryId=` + subsidiaryIdForChart, subsidiaryIdForChart)
-      .subscribe((res) => {
-        // Set data to series
-        this.seriesForDonut.data.setAll(this.chartData);
+  GetDonutChartData() {
+    this.seriesForDonut.data.setAll(this.chartData);
 
-        // Disabling labels and ticks
-        this.seriesForDonut.labels.template.set("visible", false);
-        this.seriesForDonut.ticks.template.set("visible", false);
+    // Disabling labels and ticks
+    this.seriesForDonut.labels.template.set("visible", false);
+    this.seriesForDonut.ticks.template.set("visible", false);
 
-        // Adding gradients
-        this.seriesForDonut.slices.template.set("strokeOpacity", 0);
-        this.seriesForDonut.slices.template.set("fillGradient", am5.RadialGradient.new(this.rootForDonut, {
-          stops: [{
-            brighten: -0.8
-          }, {
-            brighten: -0.8
-          }, {
-            brighten: -0.5
-          }, {
-            brighten: 0
-          }, {
-            brighten: -0.5
-          }]
-        }));
+    // Adding gradients
+    this.seriesForDonut.slices.template.set("strokeOpacity", 0);
+    this.seriesForDonut.slices.template.set("fillGradient", am5.RadialGradient.new(this.rootForDonut, {
+      stops: [{
+        brighten: -0.8
+      }, {
+        brighten: -0.8
+      }, {
+        brighten: -0.5
+      }, {
+        brighten: 0
+      }, {
+        brighten: -0.5
+      }]
+    }));
 
-        // Remove existing legend
-        this.chartForDonut.children.removeValue(this.legendForDonut);
+    // Remove existing legend
+    this.chartForDonut.children.removeValue(this.legendForDonut);
 
-        // Create legend
-        // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
-        this.legendForDonut = this.chartForDonut.children.push(am5.Legend.new(this.rootForDonut, {
-          centerY: am5.percent(50),
-          y: am5.percent(50),
-          layout: this.rootForDonut.verticalLayout
-        }));
-        // set value labels align to right
-        this.legendForDonut.valueLabels.template.setAll({ textAlign: "right" })
-        // set width and max width of labels
-        this.legendForDonut.labels.template.setAll({
-          maxWidth: 140,
-          width: 140,
-          oversizedBehavior: "wrap"
-        });
+    // Create legend
+    // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+    this.legendForDonut = this.chartForDonut.children.push(am5.Legend.new(this.rootForDonut, {
+      centerY: am5.percent(50),
+      y: am5.percent(50),
+      layout: this.rootForDonut.verticalLayout
+    }));
+    // set value labels align to right
+    this.legendForDonut.valueLabels.template.setAll({ textAlign: "right" })
+    // set width and max width of labels
+    this.legendForDonut.labels.template.setAll({
+      maxWidth: 140,
+      width: 140,
+      oversizedBehavior: "wrap"
+    });
 
-        this.legendForDonut.data.setAll(this.seriesForDonut.dataItems);
+    this.legendForDonut.data.setAll(this.seriesForDonut.dataItems);
 
-        // Play initial series animation
-        // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
-        this.seriesForDonut.appear(1000, 100);
-      });
+    // Play initial series animation
+    // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+    this.seriesForDonut.appear(1000, 100);
   }
 
   // ngOnDestroy() {
