@@ -33,6 +33,9 @@ export class TestComponent implements OnInit {
   chartForDonut: any;
   rootForDonut: any;
   legendForDonut: any;
+  chartForColumn: any;
+  xAxisForColumn: any;
+  seriesForColumn: any;
 
   private root!: am5.Root;
 
@@ -134,6 +137,98 @@ export class TestComponent implements OnInit {
 
       this.GetDonutChartData();
     });
+
+    //  Column with Rotated Labels Start -> Get data from Real API
+    this.browserOnly(() => {
+      /* Chart code */
+      // Create root element
+      // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+      let root = am5.Root.new("columnChart");
+
+
+      // Set themes
+      // https://www.amcharts.com/docs/v5/concepts/themes/
+      root.setThemes([
+        am5themes_Animated.new(root)
+      ]);
+
+
+      // Create chart
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/
+      this.chartForColumn = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true,
+        panY: true,
+        wheelX: "panX",
+        wheelY: "zoomX",
+        pinchZoomX: true
+      }));
+
+      // Add cursor
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+      let cursor = this.chartForColumn.set("cursor", am5xy.XYCursor.new(root, {}));
+      cursor.lineY.set("visible", false);
+
+
+      // Create axes
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+      let xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
+      xRenderer.labels.template.setAll({
+        rotation: -90,
+        centerY: am5.p50,
+        centerX: am5.p100,
+        paddingRight: 15
+      });
+
+      xRenderer.grid.template.setAll({
+        location: 1
+      })
+
+      this.xAxisForColumn = this.chartForColumn.xAxes.push(am5xy.CategoryAxis.new(root, {
+        maxDeviation: 0.3,
+        categoryField: "category",
+        renderer: xRenderer,
+        tooltip: am5.Tooltip.new(root, {})
+      }));
+
+      let yAxis = this.chartForColumn.yAxes.push(am5xy.ValueAxis.new(root, {
+        maxDeviation: 0.3,
+        renderer: am5xy.AxisRendererY.new(root, {
+          strokeOpacity: 0.1
+        })
+      }));
+
+
+      // Create series
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+      this.seriesForColumn = this.chartForColumn.series.push(am5xy.ColumnSeries.new(root, {
+        name: "Series 1",
+        xAxis: this.xAxisForColumn,
+        yAxis: yAxis,
+        valueYField: "value",
+        sequencedInterpolation: true,
+        categoryXField: "category",
+        tooltip: am5.Tooltip.new(root, {
+          labelText: "{valueY}"
+        })
+      }));
+
+      // Color Issue
+
+      // series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+      // series.columns.template.adapters.add("fill", function (fill, target) {
+      //   return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // });
+
+      // series.columns.template.adapters.add("stroke", function (stroke, target) {
+      //   return chart.get("colors").getIndex(series.columns.indexOf(target));
+      // });
+
+      this.seriesForColumn.set("fill", am5.color(0xff0000,));
+
+
+      // Set data
+      this.GetColumnWithRotatedLabelsChartData();
+    });
   }
 
   GetApiData(subsidiaryIdForChart: any) {
@@ -146,6 +241,7 @@ export class TestComponent implements OnInit {
 
         this.GetPieChartData(); // to pass the value in Pie Chart.
         this.GetDonutChartData(); // to pass the value in Donut Chart.
+        this.GetColumnWithRotatedLabelsChartData(); // to pass the value in Column with Rotated Labels Chart.
       });
   }
 
@@ -155,51 +251,61 @@ export class TestComponent implements OnInit {
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 2') {
       this.subsidiaryIdForChart = 2;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 43') {
       this.subsidiaryIdForChart = 43;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 4') {
       this.subsidiaryIdForChart = 4;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 5') {
       this.subsidiaryIdForChart = 5;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 6') {
       this.subsidiaryIdForChart = 7;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 7') {
       this.subsidiaryIdForChart = 7;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 8') {
       this.subsidiaryIdForChart = 8;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 9') {
       this.subsidiaryIdForChart = 9;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     } else if (this.selectedOptionForPieChartOfAPI == 'Subsidiary ID - 10') {
       this.subsidiaryIdForChart = 10;
       this.GetApiData(this.subsidiaryIdForChart);
       this.GetPieChartData();
       this.GetDonutChartData();
+      this.GetColumnWithRotatedLabelsChartData();
     }
   };
 
@@ -256,6 +362,22 @@ export class TestComponent implements OnInit {
     // https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
     this.seriesForDonut.appear(1000, 100);
   }
+
+  GetColumnWithRotatedLabelsChartData() {
+    // Update chart data
+    this.chartForColumn.xAxes.getIndex(0).data.setAll(this.chartData);
+    this.chartForColumn.series.getIndex(0).data.setAll(this.chartData);
+
+    // Set data
+    this.xAxisForColumn.data.setAll(this.chartData);
+    this.seriesForColumn.data.setAll(this.chartData);
+
+
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    this.seriesForColumn.appear(1000);
+    this.chartForColumn.appear(1000, 100);
+  };
 
   // ngOnDestroy() {
   //   // Clean up chart when the component is removed
