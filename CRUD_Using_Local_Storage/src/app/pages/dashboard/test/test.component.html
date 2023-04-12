@@ -1,1 +1,75 @@
-<p>test works!</p>
+<div class="col-sm-12 col-md-6 col-lg-6" style="margin-bottom: 1%;">
+    <select [(ngModel)]="selectedOptionForPieChartOfAPI" (change)="GetDataOnChangeSubsidiaryId()">
+        <option *ngFor="let option of optionsForPieChartOfAPI" [value]="option">{{ option }}
+        </option>
+    </select>
+</div>
+
+<div class="row">
+    <!-- Pie Chart Using Real API -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="fullscreen-div-pie-chart">
+            <p-fieldset class="extraStyleHeading">
+                <p-header>
+                    <div class="row" style="height: 25px;">
+                        <div class="col-sm-12 col-md-10 col-lg-10">
+                            <h5>Pie Chart Using Real API</h5>
+                        </div>
+                        <!-- <div class="col-sm-12 col-md-2 col-lg-2">
+                        <a (click)="toggleFullscreenPieChart()" style="float: right;">
+                            <i [ngClass]="isFullscreen ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"></i>
+                        </a>
+                    </div> -->
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+
+                        </div>
+                    </div>
+                </p-header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- <div class="col-sm-12 col-md-6 col-lg-6">
+                            <select [(ngModel)]="selectedOptionForPieChartOfAPI"
+                                (change)="GetDataOnChangeSubsidiaryId()">
+                                <option *ngFor="let option of optionsForPieChartOfAPI" [value]="option">{{ option }}
+                                </option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="pieChartAPI" style="height: 500px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </p-fieldset>
+        </div>
+    </div>
+
+    <!-- Donut Chart Using Real API -->
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <p-fieldset class="extraStyleHeading">
+            <p-header>
+                <div class="row" style="height: 25px;">
+                    <div class="col-sm-12 col-md-10 col-lg-10">
+                        <h5>Donut Chart Using Real API</h5>
+                    </div>
+                    <!-- <div class="col-sm-12 col-md-2 col-lg-2">
+                    <a (click)="toggleFullscreenPieChart()" style="float: right;">
+                        <i [ngClass]="isFullscreen ? 'pi pi-window-minimize' : 'pi pi-window-maximize'"></i>
+                    </a>
+                </div> -->
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+
+                    </div>
+                </div>
+            </p-header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="donutChartAPI" style="height: 500px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+</div>
