@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, NgZone, AfterViewInit, ViewChild } from '@angular/core';
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5 from '@amcharts/amcharts5';
 import * as am5percent from "@amcharts/amcharts5/percent";
@@ -6,13 +6,18 @@ import * as am5xy from '@amcharts/amcharts5/xy';
 import * as am5radar from '@amcharts/amcharts5/radar'
 import { isPlatformBrowser } from '@angular/common';
 import { CommonHttpService } from 'src/app/services/common-http.service'
+import { ControllerComponent } from '../controller/controller.component';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
-export class TestComponent implements OnInit {
+export class TestComponent implements OnInit,AfterViewInit {
+  // To Hide selected div with id of Controller Component
+  @ViewChild('controllerComponent') controllerComponent!: ControllerComponent;
+  @ViewChild('testDiv') testDiv:any;
+
   pieSeriesOfAPI: any;
   selectedOptionForPieChartOfAPI = 'Subsidiary ID - 9';
   optionsForPieChartOfAPI = [
@@ -59,6 +64,12 @@ export class TestComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    // To Hide a div of Controller Component
+    const myDiv = this.controllerComponent.myDiv.nativeElement;
+    const myDiv1 = this.controllerComponent.myDiv1.nativeElement;
+    this.testDiv.nativeElement.appendChild(myDiv);
+    this.testDiv.nativeElement.appendChild(myDiv1);
+
     // Pie Chart -> Get data from Real API
     this.browserOnly(() => {
       /* Chart code */

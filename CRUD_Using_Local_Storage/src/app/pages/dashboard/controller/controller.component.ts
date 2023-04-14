@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, NgZone } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, NgZone,ViewChild, ElementRef } from '@angular/core';
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5 from '@amcharts/amcharts5';
 import * as am5percent from "@amcharts/amcharts5/percent";
@@ -13,6 +13,17 @@ import { CommonHttpService } from 'src/app/services/common-http.service'
   styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit {
+  // To Hide selected div with id of Controller Component
+  @ViewChild('myDiv') myDivRef!: ElementRef;
+  @ViewChild('myDiv1') myDivRef1!: ElementRef;
+
+  get myDiv(): ElementRef {
+    return this.myDivRef;
+  }
+  get myDiv1(): ElementRef {
+    return this.myDivRef1;
+  }
+  
   isFullscreen = false;
   ingredient = 'JH';
   series:any;
