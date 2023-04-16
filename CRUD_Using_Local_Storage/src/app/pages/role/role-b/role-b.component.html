@@ -1,10 +1,27 @@
-<div class="row">
+<div class="row" style="margin-bottom: 15px;">
     <div class="col-sm-12">
-        <p-card [style]="{height: '110px', width:'95%'}" styleClass="shadow-2">
-            <div class="contentPlace" *ngIf="supplierApproval && supplierApproval.length > 0">
-                <p>{{ supplierApproval[1].value }}</p>
-                <a class="dashboardCardFoo" href="https://www.amcharts.com/docs/v5/">{{ supplierApproval[1].category }}</a>   
+        <p-panel header="Reminders">
+            <ng-template pTemplate="icons">
+                <button pButton class="p-panel-header-icon p-link" icon="pi pi-window-maximize"></button>
+            </ng-template>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="cardView cardViewSectionOne">
+                        <div class="row">
+                            <div class="col-sm-12 smallCardPart">
+                                <p-card class="SmallcardStyle SmallcardStyle1" [style]="{height: '120px', width:'95%'}"
+                                    styleClass="shadow-2">
+                                    <div class="contentPlace" *ngIf="supplierApproval && supplierApproval.length > 0">
+                                        <p>{{ supplierApproval[1].value }}</p>
+                                        <a class="dashboardCardFoo" href="https://www.amcharts.com/docs/v5/">{{
+                                            supplierApproval[1].category }}</a>
+                                    </div>
+                                </p-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </p-card>
+        </p-panel>
     </div>
 </div>
