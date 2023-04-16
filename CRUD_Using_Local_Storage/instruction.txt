@@ -18,3 +18,7 @@ ng g c /pages/top-bar
 ng g module pages/dashboard --routing
 ng g c /pages/dashboard/controller
 ng g c /pages/dashboard/test
+ng g module pages/role --routing
+ng g c /pages/role/role-a
+ng g c /pages/role/role-b
+ng g c /pages/role/role-dashboard

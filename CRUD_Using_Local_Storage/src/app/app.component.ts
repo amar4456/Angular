@@ -98,6 +98,23 @@ export class AppComponent {
           }
         ]
       },
+      {
+        label: 'Role',
+        items: [
+          {
+            label: 'Role - Dashboard',
+            routerLink: ['/Role Dashboard'],
+          },
+          {
+            label: 'Role - A',
+            routerLink: ['/Role-A'],
+          },
+          {
+            label: 'Role - B',
+            routerLink: ['/Role-B'],
+          }
+        ]
+      },
     ]
   }
 }

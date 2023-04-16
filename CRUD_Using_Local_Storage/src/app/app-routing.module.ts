@@ -5,6 +5,9 @@ import { StudentRegCRUDLocalstorageComponent } from './pages/student-reg-crud-lo
 import { PopolationComponent } from './pages/amcharts/popolation/popolation.component';
 import { ControllerComponent } from './pages/dashboard/controller/controller.component';
 import { TestComponent } from './pages/dashboard/test/test.component';
+import { RoleDashboardComponent } from './pages/role/role-dashboard/role-dashboard.component';
+import { RoleAComponent } from './pages/role/role-a/role-a.component';
+import { RoleBComponent } from './pages/role/role-b/role-b.component';
 
 
 const routes: Routes = [
@@ -27,6 +30,18 @@ const routes: Routes = [
   {
     path: 'Test-Amcharts',
     component: TestComponent,
+  },
+  {
+    path: 'Role Dashboard',
+    component: RoleDashboardComponent,
+  },
+  {
+    path: 'Role-A',
+    component: RoleAComponent,
+  },
+  {
+    path: 'Role-B',
+    component: RoleBComponent,
   },
 ];
 
