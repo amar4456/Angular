@@ -5,6 +5,7 @@ import { RoleRoutingModule } from './role-routing.module';
 import { RoleAComponent } from './role-a/role-a.component';
 import { RoleBComponent } from './role-b/role-b.component';
 import { RoleDashboardComponent } from './role-dashboard/role-dashboard.component';
+import { CardModule, } from 'primeng/card';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RoleDashboardComponent } from './role-dashboard/role-dashboard.componen
   ],
   imports: [
     CommonModule,
-    RoleRoutingModule
+    RoleRoutingModule,
+    CardModule
   ]
 })
 export class RoleModule { }

@@ -1,1 +1,10 @@
-<p>role-b works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <p-card [style]="{height: '110px', width:'95%'}" styleClass="shadow-2">
+            <div class="contentPlace" *ngIf="supplierApproval && supplierApproval.length > 0">
+                <p>{{ supplierApproval[1].value }}</p>
+                <a class="dashboardCardFoo" href="https://www.amcharts.com/docs/v5/">{{ supplierApproval[1].category }}</a>   
+            </div>
+        </p-card>
+    </div>
+</div>

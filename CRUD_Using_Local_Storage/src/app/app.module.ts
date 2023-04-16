@@ -11,6 +11,7 @@ import { PagesModule } from './pages/pages.module';
 import { StudentModule } from './pages/student/student.module';
 import { AmchartsModule } from './pages/amcharts/amcharts.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { RoleModule } from './pages/role/role.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
     BrowserAnimationsModule,
     PanelMenuModule,
     AmchartsModule,
-    DashboardModule
+    DashboardModule,
+    RoleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
