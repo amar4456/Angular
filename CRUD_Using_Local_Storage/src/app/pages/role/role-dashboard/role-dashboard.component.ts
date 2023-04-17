@@ -10,16 +10,21 @@ import { RoleBComponent } from '../role-b/role-b.component';
 export class RoleDashboardComponent implements OnInit {
   allCards: any[] = [];
 
-  constructor
-  (private roleAComponent: RoleAComponent, 
+  constructor(
+    private roleAComponent: RoleAComponent,
     private roleBComponent: RoleBComponent
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.roleAComponent.ngOnInit()
-    this.roleBComponent.ngOnInit()
-    // Adding allCards from RoleA and RoleB components
-    this.allCards.push(...this.roleAComponent.allCards, ...this.roleBComponent.allCards);
-  }
+    this.roleAComponent.allCardsReady.subscribe(allCards => {
+      this.allCards.push(...allCards);
+    });
 
+    this.roleBComponent.allCardsReady.subscribe(allCards => {
+      this.allCards.push(...allCards);
+    });
+
+    this.roleAComponent.ngOnInit();
+    this.roleBComponent.ngOnInit();
+  }
 }
