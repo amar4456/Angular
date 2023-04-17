@@ -1,27 +1,41 @@
+<select [(ngModel)]="selectedSubsidiaryId" (change)="onSubsidiaryChange()">
+  <option *ngFor="let subsidiary of subsidiaries" [value]="subsidiary.id">{{ subsidiary.name }}</option>
+</select><br><br>
+
 <div class="row">
-    <div class="col-sm-12 smallCardPart">
-      <p-panel header="Reminders">
-        <ng-template pTemplate="icons">
-          <button pButton class="p-panel-header-icon p-link" icon="pi pi-window-maximize"></button>
-        </ng-template>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="cardView cardViewSectionOne">
-              <div class="row">
-                <div style="padding: 0.5rem;" class="col-sm-12 smallCardPart" *ngFor="let card of allCards">
-                  <p-card class="SmallcardStyle SmallcardStyle1"
-                    [style]="{ height: '120px', width: '95%' }" styleClass="shadow-2">
-                    <div class="contentPlace">
-                      <p>{{ card.value }}</p>
-                      <a class="dashboardCardFoo" href="#">{{ card.category }}</a>
-                    </div>
-                  </p-card>
-                </div>
+  <div class="col-sm-12 smallCardPart">
+    <p-panel header="Reminders">
+      <ng-template pTemplate="icons">
+        <button pButton class="p-panel-header-icon p-link" icon="pi pi-window-maximize"></button>
+      </ng-template>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="cardView cardViewSectionOne">
+            <div class="row">
+              <!-- for role-a -->
+              <div style="padding: 0.5rem;" class="col-sm-12 smallCardPart" *ngFor="let card of allCards">
+                <p-card class="SmallcardStyle SmallcardStyle1" [style]="{ height: '120px', width: '95%' }"
+                  styleClass="shadow-2">
+                  <div class="contentPlace">
+                    <p>{{ card.value }}</p>
+                    <a class="dashboardCardFoo" href="#">{{ card.category }}</a>
+                  </div>
+                </p-card>
+              </div>
+              <!-- for role-b -->
+              <div style="padding: 0.5rem;" class="col-sm-12 smallCardPart" *ngFor="let card of allCards2">
+                <p-card class="SmallcardStyle SmallcardStyle1" [style]="{ height: '120px', width: '95%' }"
+                  styleClass="shadow-2">
+                  <div class="contentPlace">
+                    <p>{{ card.value }}</p>
+                    <a class="dashboardCardFoo" href="#">{{ card.category }}</a>
+                  </div>
+                </p-card>
               </div>
             </div>
           </div>
         </div>
-      </p-panel>
-    </div>
+      </div>
+    </p-panel>
   </div>
-  
+</div>

@@ -7,6 +7,7 @@ import { RoleBComponent } from './role-b/role-b.component';
 import { RoleDashboardComponent } from './role-dashboard/role-dashboard.component';
 import { CardModule, } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PanelModule } from 'primeng/panel';
     CommonModule,
     RoleRoutingModule,
     CardModule,
-    PanelModule
+    PanelModule,
+    FormsModule
   ],
   providers: [
     RoleAComponent,
