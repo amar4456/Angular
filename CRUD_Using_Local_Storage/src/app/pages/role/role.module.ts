@@ -20,6 +20,10 @@ import { PanelModule } from 'primeng/panel';
     RoleRoutingModule,
     CardModule,
     PanelModule
+  ],
+  providers: [
+    RoleAComponent,
+    RoleBComponent
   ]
 })
 export class RoleModule { }
