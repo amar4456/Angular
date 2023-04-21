@@ -23,4 +23,10 @@ ng g c /pages/role/role-a
 ng g c /pages/role/role-b
 ng g c /pages/role/role-dashboard
 ng g module pages/pagination --routing
+
+--------------- pagination -----------------
 ng g c /pages/pagination/data
+npm install --save @angular/cdk@^14.0.0
+npm install chart.js@3.7.1 quill@1.3.7
+
+-----------  ---   -------------------------

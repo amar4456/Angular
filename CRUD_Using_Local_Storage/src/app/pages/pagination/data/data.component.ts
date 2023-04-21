@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer } from './domain/customer';
+import { CustomerService } from './service/customerservice';
 
 @Component({
   selector: 'app-data',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataComponent implements OnInit {
 
-  constructor() { }
+  customers: Customer[] = [];
 
-  ngOnInit(): void {
-  }
+    constructor(private customerService: CustomerService) {}
+
+    ngOnInit() {
+        this.customerService.getCustomersLarge().then((customers) => (this.customers = customers));
+    }
 
 }
