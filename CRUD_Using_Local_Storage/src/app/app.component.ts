@@ -82,6 +82,10 @@ export class AppComponent {
           {
             label: 'API',
             routerLink: ['/AE'],
+          },
+          {
+            label: 'Data-Pagination',
+            routerLink: ['/Data-Pagination'],
           }
         ]
       },

@@ -8,6 +8,7 @@ import { TestComponent } from './pages/dashboard/test/test.component';
 import { RoleDashboardComponent } from './pages/role/role-dashboard/role-dashboard.component';
 import { RoleAComponent } from './pages/role/role-a/role-a.component';
 import { RoleBComponent } from './pages/role/role-b/role-b.component';
+import { DataComponent } from './pages/pagination/data/data.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'Role-B',
     component: RoleBComponent,
+  },
+  {
+    path: 'Data-Pagination',
+    component: DataComponent,
   },
 ];
 

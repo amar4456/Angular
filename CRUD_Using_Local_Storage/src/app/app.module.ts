@@ -12,6 +12,7 @@ import { StudentModule } from './pages/student/student.module';
 import { AmchartsModule } from './pages/amcharts/amcharts.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { RoleModule } from './pages/role/role.module';
+import { PaginationModule } from './pages/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RoleModule } from './pages/role/role.module';
     PanelMenuModule,
     AmchartsModule,
     DashboardModule,
-    RoleModule
+    RoleModule,
+    PaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

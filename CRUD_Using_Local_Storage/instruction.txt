@@ -22,3 +22,5 @@ ng g module pages/role --routing
 ng g c /pages/role/role-a
 ng g c /pages/role/role-b
 ng g c /pages/role/role-dashboard
+ng g module pages/pagination --routing
+ng g c /pages/pagination/data
