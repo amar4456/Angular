@@ -9,6 +9,7 @@ import { RoleDashboardComponent } from './pages/role/role-dashboard/role-dashboa
 import { RoleAComponent } from './pages/role/role-a/role-a.component';
 import { RoleBComponent } from './pages/role/role-b/role-b.component';
 import { DataComponent } from './pages/pagination/data/data.component';
+import { ImageEditComponent } from './pages/image/image-edit/image-edit.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'Data-Pagination',
     component: DataComponent,
+  },
+  {
+    path: 'Image-Edit',
+    component: ImageEditComponent,
   },
 ];
 

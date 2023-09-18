@@ -119,6 +119,15 @@ export class AppComponent {
           }
         ]
       },
+      {
+        label: 'Image',
+        items: [
+          {
+            label: 'Edit',
+            routerLink: ['/Image-Edit'],
+          },
+        ]
+      },
     ]
   }
 }
