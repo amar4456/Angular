@@ -33,3 +33,5 @@ npm install chart.js@3.7.1 quill@1.3.7
 
 ng g module pages/image --routing
 ng g c /pages/image/image-edit
+npm install ngx-image-cropper --save
+

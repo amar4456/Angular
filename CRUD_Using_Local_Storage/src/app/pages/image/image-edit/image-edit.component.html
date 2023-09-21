@@ -17,4 +17,29 @@
 
   <p *ngIf="resizedImageSize">Resized Image Size Instant with Height and Width Update: {{ resizedImageSize }}</p>
   <!-- Display resized image size here -->
+
+  <div class="container">
+    <div class="row" style="margin-top: 5%;">
+      <div class="text-center col-md-12">
+        <input type="file" (change)="fileChangeEvent($event)" />
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5%;">
+      <div class="text-center col-md-8">
+        <h5>Crop Image</h5>
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+          [resizeToWidth]="256" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
+      </div>
+      <div class="text-center col-md-4">
+        <button (click)="downloadCroppedImage()">Download Cropped Image</button> <!-- Add this button -->
+        <h5>Preview</h5>
+        <img [src]="croppedImage" /> <!-- Bind the 'croppedImage' property here -->
+        <p *ngIf="selectedAreaWidth && selectedAreaHeight">
+          Selected Area Dimensions: {{ selectedAreaWidth }}px x {{ selectedAreaHeight }}px
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
