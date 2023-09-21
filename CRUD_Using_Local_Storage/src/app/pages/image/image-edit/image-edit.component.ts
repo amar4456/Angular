@@ -27,6 +27,7 @@ export class ImageEditComponent implements OnInit {
   }
 
   onFileChange(event: Event): void {
+    this.imageChangedEvent = event;
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       const file = inputElement.files[0];
@@ -54,19 +55,19 @@ export class ImageEditComponent implements OnInit {
   }
 
   resizeAndDownloadImage(): void {
-    if (this.selectedImage) {
+    if (this.croppedImage) {
       const img = new Image();
-      img.src = this.selectedImage as string;
+      img.src = this.croppedImage as string;
 
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        canvas.width = this.imageWidth;
-        canvas.height = this.imageHeight;
+        canvas.width = this.selectedAreaWidth;
+        canvas.height = this.selectedAreaHeight;
         const ctx = canvas.getContext('2d');
 
         if (ctx) {
           // Draw the image with the new dimensions
-          ctx.drawImage(img, 0, 0, this.imageWidth, this.imageHeight);
+          ctx.drawImage(img, 0, 0, this.selectedAreaWidth, this.selectedAreaHeight);
 
           // Convert the canvas content to a data URL
           const resizedImage = canvas.toDataURL('image/jpeg', 1); // Adjust format and quality as needed
@@ -92,7 +93,7 @@ export class ImageEditComponent implements OnInit {
   updateResizedImageSize(): void {
     // Calculate the size of the resized image based on current dimensions
     const estimatedSizeInBytes = Math.round(
-      ((this.imageWidth * this.imageHeight * 3) / 2) // Assuming JPEG format
+      ((this.selectedAreaWidth * this.selectedAreaHeight * 3) / 2) // Assuming JPEG format
     );
 
     const sizeInKB = (estimatedSizeInBytes / 1024).toFixed(2);

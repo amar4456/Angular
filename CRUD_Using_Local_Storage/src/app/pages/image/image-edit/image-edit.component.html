@@ -1,36 +1,21 @@
 <div>
-  <input [(ngModel)]="test" type="file" (change)="onFileChange($event)" accept="image/*" />
+  <input type="file" (change)="onFileChange($event)" accept="image/*" />
 </div>
 <div>
-  <img [src]="selectedImage" alt="Selected Image" style="display: block; max-width: 100%;" />
-  <button (click)="downloadImage()">Download Image</button>
-  <div>
-    <label for="width">Width (px):</label>
-    <input type="number" id="width" [(ngModel)]="imageWidth" (input)="updateResizedImageSize()" />
-    <br />
-    <label for="height">Height (px):</label>
-    <input type="number" id="height" [(ngModel)]="imageHeight" (input)="updateResizedImageSize()" />
-  </div>
-  <button (click)="resizeAndDownloadImage()">Resize and Download Image</button>
-  <!-- <p>Resized Image Size After Click on 'Resize and Download Image' Button : {{ resizedImageSize }}</p> -->
-  <!-- Display resized image After Click on 'Resize and Download Image' Button size here -->
-
-  <p *ngIf="resizedImageSize">Resized Image Size Instant with Height and Width Update: {{ resizedImageSize }}</p>
-  <!-- Display resized image size here -->
-
+  <!-- <img [src]="selectedImage" alt="Selected Image" style="display: block; max-width: 100%;" /> -->
   <div class="container">
-    <div class="row" style="margin-top: 5%;">
+    <!-- <div class="row" style="margin-top: 5%;">
       <div class="text-center col-md-12">
         <input type="file" (change)="fileChangeEvent($event)" />
       </div>
-    </div>
+    </div> -->
     <div class="row" style="margin-top: 5%;">
       <div class="text-center col-md-8">
         <h5>Crop Image</h5>
-        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
-          [resizeToWidth]="256" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-          (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
-        </image-cropper>
+        <image-cropper [imageChangedEvent]="imageChangedEvent"  format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"> 
+        </image-cropper> 
+        <!-- [maintainAspectRatio]="true" [aspectRatio]="4 / 4" [resizeToWidth]="256" -->
       </div>
       <div class="text-center col-md-4">
         <button (click)="downloadCroppedImage()">Download Cropped Image</button> <!-- Add this button -->
@@ -42,4 +27,18 @@
       </div>
     </div>
   </div>
+  <button (click)="downloadImage()">Download Image</button>
+  <div>
+    <label for="width">Width (px):</label>
+    <input type="number" id="width" [(ngModel)]="selectedAreaWidth" (input)="updateResizedImageSize()" />
+    <br />
+    <label for="height">Height (px):</label>
+    <input type="number" id="height" [(ngModel)]="selectedAreaHeight" (input)="updateResizedImageSize()" />
+  </div>
+  <button (click)="resizeAndDownloadImage()">Resize and Download Image</button>
+  <!-- <p>Resized Image Size After Click on 'Resize and Download Image' Button : {{ resizedImageSize }}</p> -->
+  <!-- Display resized image After Click on 'Resize and Download Image' Button size here -->
+
+  <p *ngIf="resizedImageSize">Resized Image Size Instant with Height and Width Update: {{ resizedImageSize }}</p>
+  <!-- Display resized image size here -->
 </div>
