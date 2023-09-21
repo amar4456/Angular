@@ -11,6 +11,7 @@ export class ImageEditComponent implements OnInit {
   test: any
   imageWidth: number = 300; // Default width in pixels
   imageHeight: number = 200; // Default height in pixels
+  resizedImageSize: string = ''; // To store the resized image size
 
   constructor() { }
 
@@ -62,6 +63,11 @@ export class ImageEditComponent implements OnInit {
           // Convert the canvas content to a data URL
           const resizedImage = canvas.toDataURL('image/jpeg', 1); // Adjust format and quality as needed
 
+          // Calculate the size of the resized image
+          const sizeInBytes = Math.round((resizedImage.length * 3) / 4); // Estimate size
+          const sizeInKB = (sizeInBytes / 1024).toFixed(2);
+          this.resizedImageSize = `${sizeInKB} KB`;
+
           // Create a download link for the resized image
           const a = document.createElement('a');
           a.href = resizedImage;
@@ -73,6 +79,16 @@ export class ImageEditComponent implements OnInit {
         }
       };
     }
+  }
+
+  updateResizedImageSize(): void {
+    // Calculate the size of the resized image based on current dimensions
+    const estimatedSizeInBytes = Math.round(
+      ((this.imageWidth * this.imageHeight * 3) / 2) // Assuming JPEG format
+    );
+
+    const sizeInKB = (estimatedSizeInBytes / 1024).toFixed(2);
+    this.resizedImageSize = `${sizeInKB} KB`;
   }
 
 }
