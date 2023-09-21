@@ -4,4 +4,12 @@
 <div>
   <img [src]="selectedImage" alt="Selected Image" style="display: block; max-width: 100%;" />
   <button (click)="downloadImage()">Download Image</button>
+  <div>
+    <label for="width">Width (px):</label>
+    <input type="number" id="width" [(ngModel)]="imageWidth" />
+    <br />
+    <label for="height">Height (px):</label>
+    <input type="number" id="height" [(ngModel)]="imageHeight" />
+  </div>
+  <button (click)="resizeAndDownloadImage()">Resize and Download Image</button>
 </div>
