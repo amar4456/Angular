@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ImageEditComponent implements OnInit {
 
   selectedImage: any | ArrayBuffer | null = null;
+  test:any
 
   constructor() { }
 

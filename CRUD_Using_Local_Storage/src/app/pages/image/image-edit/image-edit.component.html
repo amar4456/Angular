@@ -1,5 +1,5 @@
 <div>
-  <input type="file" (change)="onFileChange($event)" accept="image/*" />
+  <input [(ngModel)]="test" type="file" (change)="onFileChange($event)" accept="image/*" />
 </div>
 <div>
   <img [src]="selectedImage" alt="Selected Image" style="display: block; max-width: 100%;" />
