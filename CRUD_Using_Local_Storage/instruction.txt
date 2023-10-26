@@ -35,3 +35,6 @@ ng g module pages/image --routing
 ng g c /pages/image/image-edit
 npm install ngx-image-cropper --save
 
+--------------- Chat -----------------
+ng g module pages/chat --routing
+ng g c /pages/chat/chatting

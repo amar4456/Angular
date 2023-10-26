@@ -10,7 +10,7 @@ import { RoleAComponent } from './pages/role/role-a/role-a.component';
 import { RoleBComponent } from './pages/role/role-b/role-b.component';
 import { DataComponent } from './pages/pagination/data/data.component';
 import { ImageEditComponent } from './pages/image/image-edit/image-edit.component';
-
+import { ChattingComponent } from './pages/chat/chatting/chatting.component';
 
 const routes: Routes = [
   {
@@ -52,6 +52,9 @@ const routes: Routes = [
   {
     path: 'Image-Edit',
     component: ImageEditComponent,
+  },{
+    path: 'Chat',
+    component: ChattingComponent,
   },
 ];
 

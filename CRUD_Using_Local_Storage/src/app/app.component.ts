@@ -128,6 +128,10 @@ export class AppComponent {
           },
         ]
       },
+      {
+        label: 'Chat',
+        routerLink: ['/Chat'],
+      },
     ]
   }
 }
