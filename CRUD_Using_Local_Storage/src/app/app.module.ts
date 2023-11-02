@@ -13,6 +13,7 @@ import { AmchartsModule } from './pages/amcharts/amcharts.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { RoleModule } from './pages/role/role.module';
 import { PaginationModule } from './pages/pagination/pagination.module';
+import { StickyTableModule } from './pages/sticky-table/sticky-table.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PaginationModule } from './pages/pagination/pagination.module';
     AmchartsModule,
     DashboardModule,
     RoleModule,
-    PaginationModule
+    PaginationModule,
+    StickyTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
