@@ -11,6 +11,7 @@ import { RoleBComponent } from './pages/role/role-b/role-b.component';
 import { DataComponent } from './pages/pagination/data/data.component';
 import { ImageEditComponent } from './pages/image/image-edit/image-edit.component';
 import { ChattingComponent } from './pages/chat/chatting/chatting.component';
+import {  TableComponent } from './pages/sticky-table/table/table.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,9 @@ const routes: Routes = [
   },{
     path: 'Chat',
     component: ChattingComponent,
+  },{
+    path: 'sticky-table',
+    component: TableComponent,
   },
 ];
 

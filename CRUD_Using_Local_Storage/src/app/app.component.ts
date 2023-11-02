@@ -132,6 +132,10 @@ export class AppComponent {
         label: 'Chat',
         routerLink: ['/Chat'],
       },
+      {
+        label: 'Sticky Table',
+        routerLink: ['/sticky-table'],
+      },
     ]
   }
 }

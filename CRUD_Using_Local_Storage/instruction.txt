@@ -38,3 +38,7 @@ npm install ngx-image-cropper --save
 --------------- Chat -----------------
 ng g module pages/chat --routing
 ng g c /pages/chat/chatting
+
+--------------- Sticky Table -----------------
+ng g module pages/sticky-table --routing
+ng g c /pages/sticky-table/table
