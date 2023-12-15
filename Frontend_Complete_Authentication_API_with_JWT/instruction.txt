@@ -7,4 +7,5 @@ npm install @amcharts/amcharts5-fonts
 
 ng build --configuration production  -----> Build for Production
 
-
+ng g module features --routing
+ng generate service /core/services/my-api
