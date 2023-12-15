@@ -9,3 +9,7 @@ ng build --configuration production  -----> Build for Production
 
 ng g module features --routing
 ng generate service /core/services/my-api
+
+ng g module features/user --routing
+ng g c /features/user/login
+ng g c /features/user/forgot
