@@ -1,5 +1,6 @@
 ng new CRUD_Using_Local_Storage
 ng g module pages --routing
+ng build --configuration production  -----> Build for Production
 ng g c /pages/inline-editing-one
 ng g c /pages/employee
 ng g c /pages/student_reg_CRUD_localstorage
