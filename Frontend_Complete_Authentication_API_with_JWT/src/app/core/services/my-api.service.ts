@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 export class MyApiService {
   private apiUrl = 'http://localhost:8000/api'; // Replace with your API endpoint
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getData(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/endpoint`);
+  getData(endpoint: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${endpoint}`);
   }
 
-  postData(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/endpoint`, data);
+  postData(endpoint: string, data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${endpoint}`, data);
   }
 }
