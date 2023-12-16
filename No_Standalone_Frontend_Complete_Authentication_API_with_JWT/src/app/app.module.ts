@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { FeaturesModule } from './features/features.module';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FeaturesModule,
   ],
   providers: [
     provideClientHydration(),
