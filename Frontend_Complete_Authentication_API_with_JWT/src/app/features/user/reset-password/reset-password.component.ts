@@ -7,13 +7,13 @@ import { MyApiService } from '../../../core/services/my-api.service';
 import { User } from '../model/user-module';
 
 @Component({
-  selector: 'app-forgot',
+  selector: 'app-reset-password',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, ButtonModule],
-  templateUrl: './forgot.component.html',
-  styleUrl: './forgot.component.scss'
+  templateUrl: './reset-password.component.html',
+  styleUrl: './reset-password.component.scss'
 })
-export class ForgotComponent {
+export class ResetPasswordComponent {
   UserData: User = new User();
 
   userId: string;
