@@ -6,3 +6,6 @@ npm install @amcharts/amcharts5
 npm install @amcharts/amcharts5-geodata
 npm install @amcharts/amcharts5-fonts
 
+ng build --configuration production  -----> Build for Production
+
+ng generate service /core/services/my-api
