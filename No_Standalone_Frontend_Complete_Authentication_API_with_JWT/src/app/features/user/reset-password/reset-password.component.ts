@@ -17,6 +17,7 @@ export class ResetPasswordComponent {
   token: string;
   newPassword: any;
   login: boolean = false;
+  showLoader: boolean = false;
 
   constructor(private route: ActivatedRoute, private myApiService: MyApiService, private messageService: MessageService, private router: Router) {
     this.userId = this.route.snapshot.params['userId'];
@@ -24,13 +25,16 @@ export class ResetPasswordComponent {
   }
 
   reset() {
+    this.showLoader = true;
     this.myApiService.postData(`user/reset-password/${this.userId}/${this.token}`, this.UserData).subscribe((res) => {
       console.log('Reset API Response:', res);
       if (res.status === 'success') {
         this.showSuccess("password Reset successfully. Please Login with new Password");
+        this.showLoader = false;
         this.login = true;
       } else {
         this.showError(res.message);
+        this.showLoader = false;
       }
     });
   }

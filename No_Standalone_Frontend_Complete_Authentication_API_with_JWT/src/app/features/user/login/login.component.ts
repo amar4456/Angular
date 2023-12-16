@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent {
   UserData: User = new User();
+  showLoader: boolean = false;
 
   constructor(private myApiService: MyApiService, private messageService: MessageService) { }
 
@@ -18,34 +19,43 @@ export class LoginComponent {
   }
 
   login() {
+    this.showLoader = true;
     this.myApiService.postData('user/login', this.UserData).subscribe((res) => {
       console.log(res);
       if (res.status === 'success') {
         this.showSuccess("Login Successful");
+        this.showLoader = false;
       } else {
         this.showError(res.message);
+        this.showLoader = false;
       }
     });
   }
 
   reset() {
+    this.showLoader = true;
     this.myApiService.postData('user/send-reset-password-email', this.UserData).subscribe((res) => {
       console.log('Reset API Response:', res);
       if (res.status === 'success') {
         this.showInfo(res.message);
+        this.showLoader = false;
       } else {
         this.showError(res.message);
+        this.showLoader = false;
       }
     });
   }
 
   register() {
+    this.showLoader = true;
     this.myApiService.postData('user/register', this.UserData).subscribe((res) => {
       console.log('Register API Response:', res);
       if (res.status === 'success') {
         this.showSuccess("Registration Successfully Completed");
+        this.showLoader = false;
       } else {
         this.showError(res.message);
+        this.showLoader = false;
       }
     });
   }
