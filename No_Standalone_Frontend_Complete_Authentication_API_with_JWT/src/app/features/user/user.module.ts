@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     BrowserModule,
     BrowserAnimationsModule,
-  ]
+    ToastModule,
+  ],
+  providers: [MessageService],
 })
 export class UserModule { }
