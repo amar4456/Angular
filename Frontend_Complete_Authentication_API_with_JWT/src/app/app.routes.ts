@@ -4,5 +4,5 @@ import { ForgotComponent } from './features/user/forgot/forgot.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'forgot', component: ForgotComponent },
+    { path: 'api/user/reset/:userId/:token', component: ForgotComponent },
 ];

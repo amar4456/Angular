@@ -3,7 +3,7 @@ import { MyApiService } from '../../../core/services/my-api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 
-import { User } from './model/login-module';
+import { User } from '../model/user-module';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +24,12 @@ export class LoginComponent {
   login() {
     this.myApiService.postData('user/login', this.UserData).subscribe((res) => {
       console.log('Login API Response:', res);
+    });
+  }
+
+  reset() {
+    this.myApiService.postData('user/send-reset-password-email', this.UserData).subscribe((res) => {
+      console.log('Reset API Response:', res);
     });
   }
 
