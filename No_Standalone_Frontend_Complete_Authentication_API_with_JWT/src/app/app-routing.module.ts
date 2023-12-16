@@ -6,7 +6,7 @@ import { ResetPasswordComponent } from './features/user/reset-password/reset-pas
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'reset', component: ResetPasswordComponent },
+  { path: 'api/user/reset/:userId/:token', component: ResetPasswordComponent },
 ];
 
 @NgModule({
