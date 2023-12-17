@@ -21,3 +21,4 @@ ng g module shared --routing
 ng g c /shared/top-bar
 ng g c /shared/side-bar
 ng g c /shared/footer
+ng g c /shared/body

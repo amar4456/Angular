@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user-module';
+import { Router } from '@angular/router';
 import { MyApiService } from '../../../core/services/my-api.service';
 import { MessageService } from 'primeng/api';
 
@@ -12,7 +13,7 @@ export class LoginComponent {
   UserData: User = new User();
   showLoader: boolean = false;
 
-  constructor(private myApiService: MyApiService, private messageService: MessageService) { }
+  constructor(private myApiService: MyApiService, private messageService: MessageService,private router: Router) { }
 
   ngOnInit(): void {
 
@@ -24,6 +25,7 @@ export class LoginComponent {
       console.log(res);
       if (res.status === 'success') {
         this.showSuccess("Login Successful");
+        this.router.navigate(['/main/dashboard']); // Redirect to Login.
         this.showLoader = false;
       } else {
         this.showError(res.message);

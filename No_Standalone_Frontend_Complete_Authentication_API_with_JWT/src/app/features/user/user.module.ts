@@ -6,8 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -22,8 +20,6 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     ToastModule,
   ],
   providers: [MessageService],
