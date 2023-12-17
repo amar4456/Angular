@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { FeaturesModule } from './features/features.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FeaturesModule } from './features/features.module';
     BrowserModule,
     AppRoutingModule,
     FeaturesModule,
+    SharedModule,
   ],
   providers: [
     provideClientHydration(),

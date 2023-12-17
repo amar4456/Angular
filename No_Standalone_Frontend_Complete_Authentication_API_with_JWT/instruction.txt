@@ -14,3 +14,10 @@ ng g module features --routing
 ng g module features/user --routing
 ng g c /features/user/login
 ng g c /features/user/reset-password
+ng g module features/dashboard --routing
+ng g c /features/dashboard/main-dashboard
+
+ng g module shared --routing
+ng g c /shared/top-bar
+ng g c /shared/side-bar
+ng g c /shared/footer
