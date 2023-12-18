@@ -1,1 +1,21 @@
-<p>side-bar works!</p>
+<!-- Menu Button -->
+<a class="icon" [ngClass]="'menuButton'">
+    <i class="fa fa-bars" (click)="adjustDisplay()" [ngClass]="'menuButtonIcon'"></i>
+</a>
+
+<div class="card flex justify-content-center">
+    <p-sidebar [(visible)]="sidebarVisible" [baseZIndex]="10000" [blockScroll]="true" [modal]="false" [styleClass]="'sidebar'">
+        <div class="card flex justify-content-center">
+            <p-panelMenu [model]="items" [styleClass]="'dashboardPanelMenu'" [multiple]="false"></p-panelMenu>
+        </div>
+        <!-- <ng-template pTemplate="header">Header Content</ng-template>
+        <ng-template pTemplate="content">Body Content</ng-template> -->
+        <ng-template pTemplate="footer">Footer Content</ng-template>
+    </p-sidebar>
+    <!-- <p-button (click)="adjustDisplay()" icon="pi pi-arrow-right"></p-button> -->
+</div>
+
+<div class="display-area p-3" [ngClass]="{'display-area-shrink': sidebarVisible}">
+    <!-- <p-button type="button" (click)="adjustDisplay()" icon="pi pi-arrow-right"></p-button> -->
+    <router-outlet></router-outlet>
+</div>

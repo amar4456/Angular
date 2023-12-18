@@ -4,6 +4,7 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 // END For PrimeNg
+
 @import "primeicons/primeicons.css";  // For PrimeIcons
 
 body {
@@ -73,3 +74,133 @@ body {
 }
 // End Loader
 
+// Side Bar
+p-sidebar .ng-trigger {
+  background: #A5D8DD;
+  width: 200px !important;
+}
+
+.display-area {
+  position: absolute;
+  left: 20px;
+  width: calc(100% - 20px);
+  transition: left 50ms ease-in, width 50ms ease-in;
+}
+
+.display-area-shrink {
+  width: calc(100% - 250px);
+  left: 210px;
+}
+
+.sidebar {
+  margin-top: 48px;
+  box-shadow: none !important;
+}
+
+.p-sidebar-icon {
+  display: none;
+} 
+
+.p-sidebar-footer {
+  margin-bottom: 48px;
+}
+
+.menuButton {
+  position: fixed;
+  top: 0;
+  padding-top: 2px;
+  left:0; 
+  height: 32px; 
+  width: 32px;
+}
+
+.menuButtonIcon {
+  position: relative;
+  color: #6B6B6B;
+  width: 15.33px;
+  height: 12.67px;
+  top: -10px;
+  left: 8.33px;
+}
+
+// Panel Menu
+.dashboardPanelMenu {
+  width: 195px;
+  margin-left: -17px;
+}
+
+.p-panelmenu .p-panelmenu-content {
+  width: 195px;
+}
+
+.p-panelmenu-expanded.p-toggleable-content:not(.ng-animating), .p-panelmenu .p-submenu-expanded:not(.ng-animating) {
+  width: 195px !important;
+}
+
+.p-panelmenu .p-toggleable-content, .p-panelmenu .p-submenu-list {
+  width: 195px !important;
+}
+
+.p-sidebar-header {
+  display: none;
+}
+
+.p-element p-menuitem {
+  width: 195px;
+}
+// END Panel Menu
+
+// END Side Bar
+
+// Top Bar
+.container-fluid {
+  background-color: #A5D8DD;
+  height: 50px;
+}
+
+.navbar {
+  padding: 0;
+}
+
+.navbar-brand {
+  position: absolute;
+  font-size: 1.5rem;
+  margin-left: 48px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+  padding: 1.5rem 1rem;
+}
+
+.menu-button{
+  margin-right: 1rem;
+}
+
+.icon {
+  line-height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+// END Top Bar
+
+// Footer
+.ng-footer {
+  height: 22px;
+  background-color: #A5D8DD;
+  color: var(--header-footer-color);
+  position: fixed;
+  bottom: 0;
+  width: 101%;
+  margin-left: -10px;
+}
+
+.ng-footer div {
+  text-align: center;
+  padding: 5px;
+  font-size: 12px;
+  margin-top: -1px;
+}
+// END Footer

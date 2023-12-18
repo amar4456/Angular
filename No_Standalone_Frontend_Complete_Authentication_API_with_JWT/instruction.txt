@@ -1,6 +1,8 @@
 ng new No_Standalone_Frontend_Complete_Authentication_API_with_JWT --no-standalone    --------> For app module based
 
 npm i primeng
+// Downgrade to 16.9.1 from 17.1.0 because of having issue in Panel Menu. Issue is All Menu is Repeated in All Sub Menus.
+npm i primeng@16.9.1 --force
 npm i primeicons
 npm install @amcharts/amcharts5
 npm install @amcharts/amcharts5-geodata
