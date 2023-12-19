@@ -7,6 +7,28 @@ npm i primeicons
 npm install @amcharts/amcharts5
 npm install @amcharts/amcharts5-geodata
 npm install @amcharts/amcharts5-fonts
+npm i bootstrap --force
+
+----------------------------------------------- mongodb  IP Issue -------------------------------------------------------------------------
+Follow below steps:
+1] Go to https://www.mongodb.com/cloud/atlas
+2] login to your mongodb atlas account
+3] Click on network access
+
+i] if you have already added ip address, then here you can see ip access list
+a] click on delete 
+
+ii] if you have not already added ip address, then just follow below steps:
+
+4] click on add ip address
+5] select 'add current ip address' or if you want you can also select 'allow access from anywhere'
+6] type in comment if you want
+7] click on confirm button
+8] this will show pending loader, wait until it shows active status
+9] now restart your server on terminal by typing 'npm start'
+
+-- That's it!
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ng build --configuration production  -----> Build for Production
 
