@@ -18,24 +18,17 @@ export class SideBarComponent {
         routerLink: '/main/dashboard',
       },
       {
-        label: 'Test',
-        icon: 'fa-solid fa-file-invoice fa-lg',
+        label: 'Student',
+        icon: 'fa-solid fa-person fa-lg',
         routerLink: null,
         items: [
           {
-            label: 'Test 1',
-            routerLink: '/main',
+            label: 'List',
+            routerLink: '/main/student',
           },
-        ],
-      },
-      {
-        label: 'Test 10',
-        icon: 'fa-solid fa-file-invoice fa-lg',
-        routerLink: null,
-        items: [
           {
-            label: 'Test 11',
-            routerLink: '/main',
+            label: 'Add',
+            routerLink: '/main/student/add',
           },
         ],
       },

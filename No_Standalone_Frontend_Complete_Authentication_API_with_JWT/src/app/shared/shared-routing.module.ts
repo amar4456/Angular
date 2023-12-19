@@ -13,7 +13,13 @@ const routes: Routes = [
           import('../features/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
           ),
-        // canActivate: [AuthGuard],
+      },
+      {
+        path: 'student',
+        loadChildren: () =>
+          import('../features/student/student.module').then(
+            (m) => m.StudentModule
+          ),
       },
     ],
   },
