@@ -13,7 +13,7 @@ export class LoginComponent {
   UserData: User = new User();
   showLoader: boolean = false;
 
-  constructor(private myApiService: MyApiService, private messageService: MessageService,private router: Router) { }
+  constructor(private myApiService: MyApiService, private messageService: MessageService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -24,12 +24,26 @@ export class LoginComponent {
     this.myApiService.postData('user/login', this.UserData).subscribe((res) => {
       console.log(res);
       if (res.status === 'success') {
+        this.getLoginUserDetail(res.token)
         this.showSuccess("Login Successful");
         this.router.navigate(['/main/dashboard']); // Redirect to Login.
         this.showLoader = false;
       } else {
         this.showError(res.message);
         this.showLoader = false;
+      }
+    });
+  }
+
+  getLoginUserDetail(token: string) {
+    this.myApiService.getData('user/loggeduser', token).subscribe((res) => {
+      if (res.User) {
+        // To Add Token With UserDetails
+        const addTokenWithUserDetails: any = res.User.token = token;
+        // Save Details to Local Storage
+        localStorage.setItem('userDetails', JSON.stringify(res.User, addTokenWithUserDetails));
+      } else {
+        this.showError(res.message);
       }
     });
   }

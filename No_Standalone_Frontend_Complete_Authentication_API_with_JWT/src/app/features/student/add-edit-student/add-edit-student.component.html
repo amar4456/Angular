@@ -1,1 +1,65 @@
-<p>add-edit-student works!</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-sm-12 p-field">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="studentData.creator" required="required" disabled="true"/>
+                <span>Created By</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="studentData.name" required="required" />
+                <span>Name</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="studentData.father_name" required="required" />
+                <span>Father Name</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top">
+            <div class="input-bx">
+                <input name="date" type="text" [(ngModel)]="studentData.dob" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                <span>Date of Birth</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="col-sm-12 p-field">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="studentData.address" required="required" />
+                <span>Address</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top">
+            <div class="input-bx">
+                <input type="email" [(ngModel)]="studentData.email" required="required" />
+                <span>Email</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top">
+            <div class="input-bx">
+                <input type="number" [(ngModel)]="studentData.mobile" required="required" />
+                <span>Mobile</span>
+            </div>
+        </div>
+        <div class="col-sm-12 p-field margin-top" style="margin-top: 30px; margin-left: 10px;">
+            <label for="approved">Approved</label>
+            <p-inputSwitch [(ngModel)]="studentData.approved"></p-inputSwitch>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 20px; float: right;">
+    <button class="btn btn-primary" type="submit" (click)="registerStudent()">Save</button>
+</div>
+
+<!-- For Toast Message -->
+<p-toast></p-toast>
+
+<!-- Loader -->
+<div *ngIf="showLoader" class="overlay">
+    <span class="loader"></span>
+</div>

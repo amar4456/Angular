@@ -4,7 +4,10 @@ import { CommonModule } from '@angular/common';
 import { StudentRoutingModule } from './student-routing.module';
 import { AddEditStudentComponent } from './add-edit-student/add-edit-student.component';
 import { ListStudentComponent } from './list-student/list-student.component';
-
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,12 @@ import { ListStudentComponent } from './list-student/list-student.component';
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    InputSwitchModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    ToastModule,
   ]
 })
 export class StudentModule { }
