@@ -1,4 +1,5 @@
 export class Student {
+    _id?: string;
     creator?: string;
     name?: string;
     father_name?: string;
@@ -7,4 +8,5 @@ export class Student {
     email?: string;
     mobile?: Number;
     approved?: boolean = true;
+    __v?: any;
 }

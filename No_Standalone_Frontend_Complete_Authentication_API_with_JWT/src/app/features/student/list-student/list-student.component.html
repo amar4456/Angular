@@ -1,1 +1,22 @@
-<p>list-student works!</p>
+<div class="card">
+    <p-table [columns]="columns" [value]="studentsList" selectionMode="single" [(selection)]="selectedStudent" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Fathers Name</th>
+                <th>Date of Birth</th>
+                <th>Created By</th>
+                <th>Approved</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.father_name }}</td>
+                <td>{{ student.dob | date: 'dd-MM-yyyy'}}</td>
+                <td>{{ student.creator }}</td>
+                <td>{{ student.approved }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
