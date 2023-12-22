@@ -17,12 +17,15 @@ export class AddEditStudentComponent {
   constructor(private myApiService: MyApiService, private messageService: MessageService, private router: Router) { }
 
   ngOnInit(): void {
-    // Retrieve the item from local storage
-    const userData: any = localStorage.getItem('userDetails');
-    // Parse the JSON string
-    const jsonObject = JSON.parse(userData);
-    this.userDetails = jsonObject;
-    this.studentData.creator = this.userDetails.name;
+    if (typeof localStorage !== 'undefined') {
+      // Retrieve the item from local storage
+      const userData: any = localStorage.getItem('userDetails');
+      // Parse the JSON string
+      const jsonObject = JSON.parse(userData);
+      this.userDetails = jsonObject;
+      this.studentData.creator = this.userDetails.name;
+    }
+
   }
 
   registerStudent() {

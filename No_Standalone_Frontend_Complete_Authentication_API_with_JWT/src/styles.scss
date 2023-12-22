@@ -82,14 +82,24 @@ p-sidebar .ng-trigger {
 
 .display-area {
   position: absolute;
-  left: 20px;
-  width: calc(100% - 20px);
-  transition: left 50ms ease-in, width 50ms ease-in;
+  left: 0px; /* Decreased the left property by 10px */
+  width: calc(100% - 0px); /* Increased the width calculation by 10px */
+  transition: left 0.20ms ease-in, width 0.20ms ease-in; /* Adjusted transition duration */
+  overflow: auto;
+  height: calc(100% - 80px);
+  margin-top: 52px;
 }
 
 .display-area-shrink {
-  width: calc(100% - 250px);
-  left: 210px;
+  width: calc(100% - 200px); /* Increased the width by 10px */
+  left: 200px; /* Decreased the left property by 10px */
+}
+
+/* Add the common styles for both classes */
+.display-area, .display-area-shrink {
+  overflow: auto;
+  height: calc(100% - 80px);
+  margin-top: 52px;
 }
 
 .sidebar {
@@ -181,6 +191,15 @@ p-sidebar .ng-trigger {
 .container-fluid {
   background-color: #A5D8DD;
   height: 50px;
+  position: fixed; /* Add this to make the top bar fixed */
+  top: 0; /* Add this to position it at the top of the viewport */
+  width: 100%;
+  z-index: -1000; /* Adjust the z-index as needed */
+}
+
+.content {
+  padding-top: 50px; /* Adjust this value based on the height of your top bar */
+  /* Additional styles for your content */
 }
 
 .navbar {
