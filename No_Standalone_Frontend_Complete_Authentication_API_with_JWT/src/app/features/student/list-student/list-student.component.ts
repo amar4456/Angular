@@ -14,6 +14,8 @@ export class ListStudentComponent {
   studentsList: Student[] = [];
   showLoader: boolean = false;
   userDetails: any;
+  totalRecords: any;
+  newEvent: any;
   columns: any[] = [];
 
   constructor(private myApiService: MyApiService, private messageService: MessageService, private router: Router) { }
@@ -26,7 +28,7 @@ export class ListStudentComponent {
       const jsonObject = JSON.parse(userData);
       this.userDetails = jsonObject;
       // this.studentData.creator = this.userDetails.name;
-      this.getAllStudent();
+      // this.getAllStudent();
     }
   }
 
@@ -44,11 +46,16 @@ export class ListStudentComponent {
 
   }
 
-  getAllStudent() {
+  getAllStudent(event: any) {
     this.showLoader = true;
-    this.myApiService.getData('user/get-all-student', this.userDetails.token).subscribe((res) => {
+    const pagination = {
+      "pageNumber": 1 + (event.first / event.rows),
+      "pageSize": event.rows
+    }
+    this.myApiService.postData('user/get-all-student', pagination, this.userDetails.token).subscribe((res) => {
       if (res.status === 'success') {
         this.studentsList = res.list;
+        this.totalRecords = res.pagination.totalRecords;
         this.showLoader = false;
       } else {
         this.showError(res.message);
@@ -62,7 +69,11 @@ export class ListStudentComponent {
     this.myApiService.postData('user/delete-student-by-email', { email: email }, this.userDetails.token).subscribe((res) => {
       if (res.status === 'success') {
         this.showSuccess("Student Deleted Successfully");
-        this.getAllStudent();
+        const pagination = {
+          "first": 0,
+          "rows": 10
+        }
+        this.getAllStudent(pagination);
         this.showLoader = false;
       } else {
         this.showError(res.message);
