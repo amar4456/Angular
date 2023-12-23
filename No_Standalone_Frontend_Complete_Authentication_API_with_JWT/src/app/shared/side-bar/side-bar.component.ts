@@ -28,7 +28,7 @@ export class SideBarComponent {
           },
           {
             label: 'Add',
-            routerLink: '/main/student/add',
+            routerLink: '/main/student/action/add',
           },
         ],
       },

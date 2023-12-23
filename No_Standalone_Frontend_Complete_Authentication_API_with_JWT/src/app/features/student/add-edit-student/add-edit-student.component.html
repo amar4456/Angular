@@ -1,3 +1,7 @@
+<div style="display: flex; justify-content: flex-end; padding-bottom: 15px;">
+    <button pButton icon="fa-solid fa-magnifying-glass fa-lg" iconPos="left" label="List" type="button" class="listEdidBtnBox" [routerLink]="['/main/student']"></button>
+</div>
+
 <div class="row">
     <div class="col-md-6">
         <div class="col-sm-12 p-field">
@@ -8,19 +12,19 @@
         </div>
         <div class="col-sm-12 p-field margin-top">
             <div class="input-bx">
-                <input type="text" [(ngModel)]="studentData.name" required="required" />
+                <input type="text" [(ngModel)]="studentData.name" required="required" [disabled]="viewMode" />
                 <span>Name</span>
             </div>
         </div>
         <div class="col-sm-12 p-field margin-top">
             <div class="input-bx">
-                <input type="text" [(ngModel)]="studentData.father_name" required="required" />
+                <input type="text" [(ngModel)]="studentData.father_name" required="required" [disabled]="viewMode" />
                 <span>Father Name</span>
             </div>
         </div>
         <div class="col-sm-12 p-field margin-top">
             <div class="input-bx">
-                <input name="date" type="text" [(ngModel)]="studentData.dob" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+                <input name="date" type="text" [(ngModel)]="studentData.dob" onfocus="(this.type='date')" [disabled]="viewMode" onblur="if(!this.value)this.type='text'">
                 <span>Date of Birth</span>
             </div>
         </div>
@@ -29,30 +33,30 @@
     <div class="col-md-6">
         <div class="col-sm-12 p-field">
             <div class="input-bx">
-                <input type="text" [(ngModel)]="studentData.address" required="required" />
+                <input type="text" [(ngModel)]="studentData.address" required="required" [disabled]="viewMode" />
                 <span>Address</span>
             </div>
         </div>
         <div class="col-sm-12 p-field margin-top">
             <div class="input-bx">
-                <input type="email" [(ngModel)]="studentData.email" required="required" />
+                <input type="email" [(ngModel)]="studentData.email" required="required" [disabled]="viewMode" />
                 <span>Email</span>
             </div>
         </div>
         <div class="col-sm-12 p-field margin-top">
             <div class="input-bx">
-                <input type="number" [(ngModel)]="studentData.mobile" required="required" />
+                <input type="number" [(ngModel)]="studentData.mobile" required="required" [disabled]="viewMode" />
                 <span>Mobile</span>
             </div>
         </div>
         <div class="col-sm-12 p-field margin-top" style="margin-top: 30px; margin-left: 10px;">
             <label for="approved">Approved</label>
-            <p-inputSwitch [(ngModel)]="studentData.approved"></p-inputSwitch>
+            <p-inputSwitch [(ngModel)]="studentData.approved" [disabled]="viewMode"></p-inputSwitch>
         </div>
     </div>
 </div>
 
-<div style="margin-top: 20px; float: right;">
+<div style="margin-top: 20px; float: right;" *ngIf="!viewMode">
     <button class="btn btn-primary" type="submit" (click)="registerStudent()">Save</button>
 </div>
 

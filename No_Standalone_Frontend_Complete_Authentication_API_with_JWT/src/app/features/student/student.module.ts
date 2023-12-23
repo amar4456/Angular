@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TableModule } from 'primeng/table';
     ButtonModule,
     ToastModule,
     TableModule,
-  ]
+  ],
+  providers: [DatePipe],
 })
 export class StudentModule { }

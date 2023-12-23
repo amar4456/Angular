@@ -30,11 +30,39 @@ export class ListStudentComponent {
     }
   }
 
+  navigateToAddViewEdit(
+    action: string,
+    selectedStudent: Student = new Student()
+  ) {
+    let studentEmail = null;
+    if (selectedStudent?.email) {
+      studentEmail = selectedStudent.email;
+      this.router.navigate(['/main/student/action', action, studentEmail]);
+    } else {
+      this.router.navigate(['/main/student/action', action]);
+    }
+
+  }
+
   getAllStudent() {
     this.showLoader = true;
     this.myApiService.getData('user/get-all-student', this.userDetails.token).subscribe((res) => {
       if (res.status === 'success') {
         this.studentsList = res.list;
+        this.showLoader = false;
+      } else {
+        this.showError(res.message);
+        this.showLoader = false;
+      }
+    });
+  }
+
+  deleteStudent(email: any) {
+    this.showLoader = true;
+    this.myApiService.postData('user/delete-student-by-email', { email: email }, this.userDetails.token).subscribe((res) => {
+      if (res.status === 'success') {
+        this.showSuccess("Student Deleted Successfully");
+        this.getAllStudent();
         this.showLoader = false;
       } else {
         this.showError(res.message);
