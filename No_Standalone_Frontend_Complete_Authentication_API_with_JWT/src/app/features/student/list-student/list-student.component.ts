@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Student } from '../model/student-model';
+import { Student, filters } from '../model/student-model';
 import { Router } from '@angular/router';
 import { MyApiService } from '../../../core/services/my-api.service';
 import { MessageService } from 'primeng/api';
@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ListStudentComponent {
   selectedStudent: Student = new Student();
+  filters: filters = new filters();
   studentsList: Student[] = [];
   showLoader: boolean = false;
   userDetails: any;
@@ -48,11 +49,22 @@ export class ListStudentComponent {
 
   getAllStudent(event: any) {
     this.showLoader = true;
-    const pagination = {
-      "pageNumber": 1 + (event.first / event.rows),
-      "pageSize": event.rows
-    }
-    this.myApiService.postData('user/get-all-student', pagination, this.userDetails.token).subscribe((res) => {
+    const baseSearch = {
+      filters: {
+        "name": this.filters.name,
+        "email": this.filters.email,
+        "mobile": this.filters.mobile,
+      },
+      pagination: {
+        "pageNumber": 1 + (event.first / event.rows),
+        "pageSize": event.rows
+      },
+      sorting: {
+        "sortColumn": event.sortField ? event.sortField : "_id",
+        "sortOrder": event.sortOrder === -1 ? 'descending' : 'ascending'
+      }
+    };
+    this.myApiService.postData('user/get-all-student', baseSearch, this.userDetails.token).subscribe((res) => {
       if (res.status === 'success') {
         this.studentsList = res.list;
         this.totalRecords = res.pagination.totalRecords;
@@ -62,6 +74,17 @@ export class ListStudentComponent {
         this.showLoader = false;
       }
     });
+  }
+
+  clearFilter() {
+    this.filters.name = "";
+    this.filters.email = "";
+    this.filters.mobile = "";
+    const pagination = {
+      "first": 0,
+      "rows": 10
+    }
+    this.getAllStudent(pagination);
   }
 
   deleteStudent(email: any) {

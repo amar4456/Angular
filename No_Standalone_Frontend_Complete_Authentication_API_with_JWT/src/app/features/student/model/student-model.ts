@@ -10,3 +10,9 @@ export class Student {
     approved?: boolean = true;
     __v?: any;
 }
+
+export class filters {
+    name?: string;
+    email?: string;
+    mobile?: any;
+}

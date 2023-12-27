@@ -2,11 +2,43 @@
     <p-button label="Create New" icon="pi pi-plus" iconPos="left" class="p-button-primary topLinkBtn headercreateBtn" (onClick)="navigateToAddViewEdit('add')"></p-button>
 </div>
 
+<div class="row">
+    <h2>Filters</h2>
+    <div class="col-md-4">
+        <div class="col-sm-12 p-field">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="filters.name" required="required"/>
+                <span>Name</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-12 p-field">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="filters.email" required="required"/>
+                <span>Email</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-sm-12 p-field">
+            <div class="input-bx">
+                <input type="text" [(ngModel)]="filters.mobile" required="required"/>
+                <span>Mobile</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display: flex; justify-content: flex-end; padding-bottom: 15px; margin-top: 10px;">
+    <button class="btn btn-primary" type="submit" (click)="getAllStudent($event)" style="margin-right: 10px;">Find</button>
+    <button class="btn btn-primary" type="submit" (click)="clearFilter()">Canel</button>
+</div>
+
 <div class="card">
     <p-table [columns]="columns" [value]="studentsList" selectionMode="single" [lazy]="true" (onLazyLoad)="getAllStudent($event)" [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [loading]="showLoader" [rowsPerPageOptions]="[10,25,50]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedStudent" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
             <tr>
-                <th>Name</th>
+                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
                 <th>Fathers Name</th>
                 <th>Date of Birth</th>
                 <th>Created By</th>
