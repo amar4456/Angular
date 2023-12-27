@@ -32,6 +32,11 @@ export class SideBarComponent {
           },
         ],
       },
+      {
+        label: 'Chat',
+        icon: 'fa-solid fa-message fa-lg',
+        routerLink: '/main/chat',
+      },
     ];
   }
 

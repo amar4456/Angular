@@ -21,6 +21,13 @@ const routes: Routes = [
             (m) => m.StudentModule
           ),
       },
+      {
+        path: 'chat',
+        loadChildren: () =>
+          import('../features/chat/chat.module').then(
+            (m) => m.ChatModule
+          ),
+      },
     ],
   },
 ];
