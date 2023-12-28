@@ -1,1 +1,17 @@
-<p>chatting works!</p>
+<div class="chatBody">
+    <div class="chat-container">
+        <div class="chat-header">Realtime Chat</div>
+
+        <ul class="chat-messages">
+            <li *ngFor="let msg of messages" [ngClass]="{'sent-message': msg.username === username}">
+                <span class="message-username">{{ msg.username }}:</span> {{ msg.content }}
+                <span class="message-timestamp">{{ msg.timestamp }}</span>
+            </li>
+        </ul>
+
+        <div class="chat-input">
+            <input [(ngModel)]="message" placeholder="Type a message..." />
+            <button (click)="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
