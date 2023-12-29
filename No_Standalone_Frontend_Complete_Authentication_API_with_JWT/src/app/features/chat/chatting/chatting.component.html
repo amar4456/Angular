@@ -5,7 +5,7 @@
         <ul class="chat-messages">
             <li *ngFor="let msg of messages" [ngClass]="{'sent-message': msg.username === username}">
                 <span class="message-username">{{ msg.username }}:</span> {{ msg.content }}
-                <span class="message-timestamp">{{ msg.timestamp }}</span>
+                <span class="message-timestamp">_ {{ msg.timestamp | date:'HH:mm:ss dd/MM/yyyy'}}</span>
             </li>
         </ul>
 
