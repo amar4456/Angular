@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import io from 'socket.io-client';
 import { MyApiService } from '../../../core/services/my-api.service';
 
@@ -7,16 +7,14 @@ import { MyApiService } from '../../../core/services/my-api.service';
   templateUrl: './chatting.component.html',
   styleUrls: ['./chatting.component.scss']
 })
-export class ChattingComponent {
+export class ChattingComponent implements OnInit {
   socket = io('http://localhost:8000');
   message: string = '';
   messages: { username: string; content: string; timestamp: string }[] = [];
   username: any;
   messageData: any;
 
-  constructor(
-    private myApiService: MyApiService,
-  ) { }
+  constructor(private myApiService: MyApiService) { }
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
@@ -29,6 +27,7 @@ export class ChattingComponent {
     this.socket.on('chat message', (data: { username: string; content: string; timestamp: string }) => {
       this.messages.push(data);
       this.saveChat();
+      this.showNotification(data);
     });
   }
 
@@ -46,20 +45,39 @@ export class ChattingComponent {
       if (res.status === 'success') {
         //
       } else {
-        console.log(res)
+        console.log(res);
       }
-    })
+    });
   }
 
   getChat() {
     let test: any;
     this.myApiService.getData('user/get-chat', test).subscribe((res) => {
       if (res.status === 'success') {
-        this.messages = [];
         this.messages = res.message;
       } else {
-        console.log(res)
+        console.log(res);
       }
     });
+  }
+
+  showNotification(data: { username: string; content: string; timestamp: string }) {
+    if (Notification.permission === 'granted' && data.username !== this.username) {
+      const notification = new Notification(`${data.username} sent a message`, {
+        body: data.content,
+        icon: '../../../../assets/Chat/Message.png' // Replace with the path to your notification icon
+      });
+
+      // Close the notification after a few seconds (adjust as needed)
+      setTimeout(() => {
+        notification.close();
+      }, 15000);
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          this.showNotification(data);
+        }
+      });
+    }
   }
 }
