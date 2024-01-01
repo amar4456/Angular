@@ -24,6 +24,6 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     ButtonModule,
     PanelMenuModule,
   ],
-  providers: [SideBarComponent],
+  providers: [SideBarComponent, TopBarComponent,],
 })
 export class SharedModule { }

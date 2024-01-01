@@ -399,3 +399,26 @@ p-sidebar .ng-trigger {
   text-align: right;
 }
 // END Chat
+
+// Notification
+.notification-link {
+  cursor: pointer;
+}
+
+.bell-icon {
+  position: relative;
+  background-color: #007bff; /* Set the background color of the bell icon */
+  border-radius: 50%; /* Make it a circle using border-radius */
+  color: white; /* Set the text color to white */
+  padding: 8px; /* Adjust padding as needed */
+  margin-left: -50px;
+}
+
+.notification-count {
+  background-color: red; /* Set the background color of the badge to red */
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 100%); /* Center the badge inside the bell icon */
+}
+// END Notification

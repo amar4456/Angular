@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import io from 'socket.io-client';
 import { MyApiService } from '../../../core/services/my-api.service';
+import { TopBarComponent } from '../../../shared/top-bar/top-bar.component';
 
 @Component({
   selector: 'app-chatting',
@@ -14,7 +15,7 @@ export class ChattingComponent implements OnInit {
   username: any;
   messageData: any;
 
-  constructor(private myApiService: MyApiService) { }
+  constructor(private myApiService: MyApiService, private TopBarComponent: TopBarComponent,) { }
 
   ngOnInit(): void {
     if (typeof localStorage !== 'undefined') {
@@ -28,6 +29,7 @@ export class ChattingComponent implements OnInit {
       this.messages.push(data);
       this.saveChat();
       this.showNotification(data);
+      this.TopBarComponent.getUnseenMessagesCount();
     });
   }
 
@@ -55,6 +57,7 @@ export class ChattingComponent implements OnInit {
     this.myApiService.getData('user/get-chat', test).subscribe((res) => {
       if (res.status === 'success') {
         this.messages = res.message;
+        this.markMessagesAsSeen();
       } else {
         console.log(res);
       }
@@ -79,5 +82,22 @@ export class ChattingComponent implements OnInit {
         }
       });
     }
+  }
+
+  markMessagesAsSeen() {
+    // To get username when i call this function from another component.
+    const userData: any = localStorage.getItem('userDetails');
+    const jsonObject = JSON.parse(userData);
+    this.username = jsonObject.name;
+
+    let userName = { "username": this.username };
+
+    this.myApiService.postData(`user/mark-messages-as-seen`, userName).subscribe((res) => {
+      if (res.status === 'success') {
+        this.TopBarComponent.getUnseenMessagesCount();
+      } else {
+        console.log(res);
+      }
+    });
   }
 }

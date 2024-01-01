@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MyApiService {
   private apiUrl = 'http://localhost:8000/api'; // Replace with your API endpoint
+
+  private unseenMessagesCountSubject = new BehaviorSubject<number>(0);
 
   constructor(private http: HttpClient) { }
 
@@ -27,5 +30,10 @@ export class MyApiService {
     });
     // Make the HTTP request with the provided headers
     return this.http.post<any>(`${this.apiUrl}/${endpoint}`, data, { headers });
+  }
+
+  unseenMessagesCount$ = this.unseenMessagesCountSubject.asObservable();
+  updateUnseenMessagesCount(count: number) {
+    this.unseenMessagesCountSubject.next(count);
   }
 }

@@ -5,5 +5,15 @@
             <!-- <a class="icon" (click)="menuButtonAppComponent()"><span class="navbar-toggler-icon"></span></a> -->
         </div>
         <a class="navbar-brand" href="#">AK Panel</a>
+
+        <!-- Notification Icon with Count -->
+        <ng-container *ngIf="refreshRow">
+            <div class="notification-icon">
+                <a class="notification-link" (click)="handleNotificationClick()">
+                    <i class="fas fa-bell bell-icon"></i>
+                    <span class="badge badge-pill badge-danger notification-count">{{ myApiService.unseenMessagesCount$ | async }}</span>
+                </a>
+            </div>
+        </ng-container>
     </div>
 </nav>
