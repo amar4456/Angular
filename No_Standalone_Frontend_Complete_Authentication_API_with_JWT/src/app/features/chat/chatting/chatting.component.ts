@@ -43,6 +43,9 @@ export class ChattingComponent implements OnInit {
   }
 
   saveChat() {
+    if (this.messageData === undefined) {
+      return;
+    }
     this.myApiService.postData('user/save-chat', this.messageData).subscribe((res) => {
       if (res.status === 'success') {
         //

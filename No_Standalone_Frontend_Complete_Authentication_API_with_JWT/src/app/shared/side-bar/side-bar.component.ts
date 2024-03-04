@@ -32,10 +32,25 @@ export class SideBarComponent {
           },
         ],
       },
+      // {
+      //   label: 'Chat',
+      //   icon: 'fa-solid fa-message fa-lg',
+      //   routerLink: '/main/chat',
+      // },
       {
         label: 'Chat',
         icon: 'fa-solid fa-message fa-lg',
-        routerLink: '/main/chat',
+        routerLink: null,
+        items: [
+          {
+            label: 'Users List',
+            routerLink: '/main/chat/users-list',
+          },
+          {
+            label: 'Chat',
+            routerLink: '/main/chat',
+          }
+        ],
       },
     ];
   }

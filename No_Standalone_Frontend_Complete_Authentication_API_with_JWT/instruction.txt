@@ -46,6 +46,7 @@ ng g c /features/student/list-student
 
 ng g module features/chat --routing
 ng g c /features/chat/chatting
+ng g c /features/chat/users-list
 
 ng g module features/dashboard --routing
 ng g c /features/dashboard/main-dashboard

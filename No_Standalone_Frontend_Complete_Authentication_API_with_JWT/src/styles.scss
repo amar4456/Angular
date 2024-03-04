@@ -422,3 +422,9 @@ p-sidebar .ng-trigger {
   transform: translate(-50%, 100%); /* Center the badge inside the bell icon */
 }
 // END Notification
+
+// Table Body
+tbody, td, tfoot, th, thead, tr:hover {
+  cursor: pointer;
+}
+// END Table Body
