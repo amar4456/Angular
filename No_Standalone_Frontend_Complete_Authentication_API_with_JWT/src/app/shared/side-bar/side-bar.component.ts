@@ -52,6 +52,11 @@ export class SideBarComponent {
           }
         ],
       },
+      {
+        label: 'Excel',
+        icon: 'fa-solid fa-file-excel fa-lg',
+        routerLink: '/main/excel',
+      },
     ];
   }
 

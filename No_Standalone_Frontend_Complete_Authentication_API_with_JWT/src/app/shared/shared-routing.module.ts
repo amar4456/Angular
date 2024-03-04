@@ -28,6 +28,13 @@ const routes: Routes = [
             (m) => m.ChatModule
           ),
       },
+      {
+        path: 'excel',
+        loadChildren: () =>
+          import('../features/excel/excel.module').then(
+            (m) => m.ExcelModule
+          ),
+      },
     ],
   },
 ];
