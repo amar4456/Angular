@@ -1,1 +1,6 @@
-<p>convert-to-excel works!</p>
+<input type="file" (change)="onFileSelected($event)" accept="image/*">
+<button (click)="convertImage()">Convert Image to Text</button>
+<div *ngIf="textResult">
+    <h3>Extracted Text:</h3>
+    <p>{{ textResult }}</p>
+</div>

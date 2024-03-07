@@ -32,6 +32,14 @@ export class MyApiService {
     return this.http.post<any>(`${this.apiUrl}/${endpoint}`, data, { headers });
   }
 
+  convertToExcel(endpoint: string, imageData: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${endpoint}`, { imageData }, { responseType: 'blob' });
+  }
+
+  convertImageToText(endpoint: string, imageData: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${endpoint}`, { imageData });
+  }
+
   unseenMessagesCount$ = this.unseenMessagesCountSubject.asObservable();
   updateUnseenMessagesCount(count: number) {
     this.unseenMessagesCountSubject.next(count);

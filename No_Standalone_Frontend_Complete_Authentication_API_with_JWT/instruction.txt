@@ -9,6 +9,7 @@ npm install @amcharts/amcharts5-geodata
 npm install @amcharts/amcharts5-fonts
 npm i bootstrap --force
 npm install socket.io-client  --legacy-peer-deps
+npm install xlsx --legacy-peer-deps
 
 ----------------------------------------------- mongodb  IP Issue -------------------------------------------------------------------------
 Follow below steps:
